@@ -1,0 +1,41 @@
+{
+	"name": "just-kidding",
+	"version": "1.0.0",
+	"description": "All parenting fun stuff",
+	"main": "server.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node server.js",
+		"lint": "npx eslint **/*.js",
+		"lint-fix": "npx eslint **/*.js --fix",
+		"seed": "node seeds/seed.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/leoelicos/just-kidding.git"
+	},
+	"keywords": [
+		"parenting",
+		"kid",
+		"babies"
+	],
+	"author": "asantidrian, key16, leoelicos",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/leoelicos/just-kidding/issues"
+	},
+	"homepage": "https://github.com/leoelicos/just-kidding#readme",
+	"dependencies": {
+		"bcrypt": "^5.0.1",
+		"connect-session-sequelize": "^7.1.4",
+		"dotenv": "^16.0.1",
+		"express": "^4.18.1",
+		"express-handlebars": "^6.0.6",
+		"express-session": "^1.17.3",
+		"mysql2": "^2.3.3",
+		"sequelize": "^6.20.1"
+	},
+	"devDependencies": {
+		"eslint": "^8.16.0"
+	}
+}
