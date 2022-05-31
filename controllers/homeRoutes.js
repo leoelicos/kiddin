@@ -21,6 +21,7 @@ router.get('/thread/:id', withAuth, async (req, res) => {
   try {
     const threadData = await Thread.findByPk(req.params.id);
 
+
     const thread = threadData.get({ plain: true });
 
     const getPosts = async (id) =>
@@ -37,6 +38,7 @@ router.get('/thread/:id', withAuth, async (req, res) => {
       where: {
         order: [ [ 'id', 'DESC' ]]
       }
+
     });
   } catch (err) {
     res.status(500).json(err);
