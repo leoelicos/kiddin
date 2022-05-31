@@ -21,11 +21,24 @@ router.get('/thread/:id', withAuth, async (req, res) => {
   try {
     const threadData = await Thread.findByPk(req.params.id);
 
-    const threads = threadData.get({ plain: true });
+
+    const thread = threadData.get({ plain: true });
+
+    const getPosts = async (id) =>
+      Post.findAll({
+        where: { thread_id: id },
+      });
+
+    const postArray = await getPosts(req.params.id);
 
     res.render('threads', {
-      ...threads,
-      logged_in: req.session.logged_in
+      thread,
+      postArray,
+      logged_in: req.session.logged_in,
+      where: {
+        order: [ [ 'id', 'DESC' ]]
+      }
+
     });
   } catch (err) {
     res.status(500).json(err);
