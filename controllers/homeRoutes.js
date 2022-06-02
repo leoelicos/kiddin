@@ -35,7 +35,7 @@ router.get('/thread/:id', withAuth, async (req, res) => {
       });
 
     const postsData = await getPosts(req.params.id);
-const posts = postsData.map((postData)=>postData.get({plain:true}))
+    const posts = postsData.map((postData)=>postData.get({plain:true}));
     res.render('threads', {
       thread,
       posts,
