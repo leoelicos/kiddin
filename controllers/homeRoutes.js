@@ -21,7 +21,6 @@ router.get('/thread/:id', withAuth, async (req, res) => {
   try {
     const threadData = await Thread.findByPk(req.params.id);
 
-
     const thread = threadData.get({ plain: true });
 
     const getPosts = async (id) =>
@@ -42,18 +41,15 @@ const posts = postsData.map((postData)=>postData.get({plain:true}))
       posts,
       logged_in: req.session.logged_in,
       where: {
-        order: [ [ 'id', 'DESC' ]]
+        order: [['id', 'DESC']]
       }
-
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-
 router.get('/login', (req, res) => {
-
   if (req.session.logged_in) {
     res.redirect('/');
     return;
