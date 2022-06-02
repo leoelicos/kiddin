@@ -9,13 +9,13 @@
     <h3>Latest post</h3>
 
     <div>
-      title:{{postArray[0].title}}
+      title:{{posts[0].title}}
     </div>
     <div>
-      text:{{postArray[0].Arraytext}}
+      text:{{posts[0].Arraytext}}
     </div>
     <div>
-      Image: {{postArray[0].image_url}}
+      Image: {{posts[0].image_url}}
     </div>
 
   </div>
@@ -38,7 +38,9 @@
   </div>
   <div>
     <h3>Other Posts</h3>
+    {{#each posts as |post|}}
     {{>history}}
+    {{/each}}
   </div>
 
 </div>
