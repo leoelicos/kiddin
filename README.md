@@ -126,6 +126,6 @@ npm start
 
 ## License
 
-&copy; Leo Wong <leoelicos@gmail.com>
+&copy; Alicia Santidrian <asantidrian83@gmail.com>, Jess Huang <turnrightandyour@gmail.com>, Leo Wong <leoelicos@gmail.com>
 
 Licensed under the [MIT License](./LICENSE).
