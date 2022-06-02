@@ -27,13 +27,19 @@ router.get('/thread/:id', withAuth, async (req, res) => {
     const getPosts = async (id) =>
       Post.findAll({
         where: { thread_id: id },
+        include: [
+          {
+            model: User,
+            attributes: ['username'],
+          },
+        ],
       });
 
-    const postArray = await getPosts(req.params.id);
-
+    const postsData = await getPosts(req.params.id);
+const posts = postsData.map((postData)=>postData.get({plain:true}))
     res.render('threads', {
       thread,
-      postArray,
+      posts,
       logged_in: req.session.logged_in,
       where: {
         order: [ [ 'id', 'DESC' ]]
