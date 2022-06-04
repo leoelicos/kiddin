@@ -19,15 +19,22 @@ router.post('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   try {
+    console.log(req.body);
     const userData = await User.findOne({ where: { email: req.body.email } });
+    console.log('userData is ', userData);
     if (!userData) {
       res.status(404).json({ message: 'Incorrect email or password, please try again' });
       return;
     }
-    const validPassword = await bcrypt.compare(
-      req.body.password,
-      userData.password
-    );
+
+    const validPassword = await userData.checkPassword(req.body.password);
+
+
+
+
+    console.log('req body pw is ' , req.body.password,);
+    console.log('user data pw is ' , userData.password);
+
     if (!validPassword) {
       res.status(400).json({ message: 'Incorrect email or password, please try again' });
       return;

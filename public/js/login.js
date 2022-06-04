@@ -12,7 +12,6 @@ const loginFormHandler = async (event) => {
       body: JSON.stringify({ email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
-
     if (response.ok) {
       // If successful, redirect the browser to the profile page
       document.location.replace('/');
@@ -30,7 +29,7 @@ const signupFormHandler = async (event) => {
   const password = document.querySelector('#InputPasswordSignup').value.trim();
 
   if (username && email && password) {
-    const response = await fetch('/api/user', {
+    const response = await fetch('/api/users/', {
       method: 'POST',
       body: JSON.stringify({ username, email, password }),
       headers: { 'Content-Type': 'application/json' },

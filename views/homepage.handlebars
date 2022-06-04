@@ -1,8 +1,14 @@
-{{#each threads as |thread|}}
-<div class="card-body col-sm-4 border rounded m-5" style="width: 18rem;">
-    <img class="card-img-top" src=".\img\{{id}}" alt="Card image cap">
-    <div class="card-body">
-        <p class="card-text">{{title}}</p>
+<div class="row row-cols-3 g-4">
+    {{#each threads as |thread|}}
+    <div class=" col-12 col-lg-4 ">
+        <div class="card border rounded m-5">
+            <a href="/thread/{{id}}">
+                <img class=" card-img-top rounded-1" src="{{img}}" alt="Card image cap">
+                <div class="card-body">
+                    <p class="card-text">{{title}}</p>
+                </div>
+            </a>
+        </div>
     </div>
+    {{/each}}
 </div>
-{{/each}}
