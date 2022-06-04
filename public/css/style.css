@@ -1,14 +1,60 @@
+
+
 body {
-    background-image: url('https://i.pinimg.com/564x/b0/e0/60/b0e0600e6cb207dd960a322b3729172d.jpg')
+    background-image: url('https://i.pinimg.com/564x/b0/e0/60/b0e0600e6cb207dd960a322b3729172d.jpg');
+    /* font-family: 'Fuzzy Bubbles', sans-serif; */
+    font-family: 'Patrick Hand', sans-serif;
+
 }
 
 .navbar {
-    background-color: rgb(248, 201, 209);
-    
+    background: rgb(255,233,246);
+    background: linear-gradient(120deg, rgba(255,233,246,1) 6%, rgba(255,182,209,1) 96%);
 }
+
+
 
 .card {
 height:auto;
+}
+
+.card-container .login {
+    background-color: rgba(105, 202, 247, 0.418);
+    color: rgb(0, 0, 0);
+}
+
+.card-container .signup {
+    background-color: rgba(255, 208, 216, 0.801);
+    color: rgb(0, 0, 0);
+}
+
+.newpost{
+    background-color:rgba(255, 226, 231, 0.795);
+    color: rgb(0, 0, 0);
+    box-shadow: 12px 12px 2px 1px rgba(240, 124, 145, 0.377);
+
+}
+
+
+.oldpost{
+    background-color:rgba(204, 238, 253, 0.76);
+    color: rgb(0, 0, 0);
+    box-shadow: 12px 12px 2px 1px rgba(135, 192, 240, 0.623);
+
+}
+
+
+.oldpostbody{
+    background-color:rgba(245, 252, 255, 0.76);
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+
+}
+
+.formclass{
+    background-color:rgba(255, 245, 255, 0.76);
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
 }
 
 .border {
@@ -16,8 +62,36 @@ height:auto;
 
 }
 
+.login .btn {
+    background-color:rgb(248, 201, 209);
+}
+
+.postbtn{
+    background-color:rgb(201, 237, 248);
+}
+
+
+.signup .btn {
+    background-color: rgb(144, 220, 255);
+   
+}
+
+.history{
+    overflow:scroll;
+}
+
+.threadtitle{
+    background-color:rgba(255, 255, 255, 0.582);
+    color:rgba(135, 193, 240, 0.959)
+}
+
 header a {
     text-decoration: none;
+}
+
+.main {
+    background-color:rgba(255, 255, 255, 0.582);
+    color:rgba(135, 193, 240, 0.959)
 }
 
 
@@ -40,3 +114,83 @@ header a {
       width: 10%;
     }
   }
+
+
+  .title-word {
+    animation: color-animation 4s linear infinite;
+  }
+  
+  .title-word-1 {
+    --color-1: #DF8453;
+    --color-2: #3D8DAE;
+    --color-3: #E4A9A8;
+  }
+  
+  .title-word-2 {
+    --color-1: #DBAD4A;
+    --color-2: #ACCFCB;
+    --color-3: #17494D;
+  }
+  
+  .title-word-3 {
+    --color-1: #ACCFCB;
+    --color-2: #E4A9A8;
+    --color-3: #ACCFCB;
+  }
+  
+
+  
+  @keyframes color-animation {
+    0%    {color: var(--color-1)}
+    32%   {color: var(--color-1)}
+    33%   {color: var(--color-2)}
+    65%   {color: var(--color-2)}
+    66%   {color: var(--color-3)}
+    99%   {color: var(--color-3)}
+    100%  {color: var(--color-1)}
+  }
+  
+  /* Here are just some visual styles. 🖌 */
+  
+  .container {
+    display: grid;
+    place-items: center;  
+    text-align: center;
+  }
+  
+  .title {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    font-size: 8.5vw;
+    text-transform: uppercase;
+  }
+
+
+.btn-shine {
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%,-50%)
+  padding: 12px 48px
+  color: #ffffff
+  background: linear-gradient(to right, #4d4d4d 0, white 10%, #4d4d4d 20%)
+  background-position: 0
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
+  animation: shine 3s infinite linear
+  animation-fill-mode: forwards
+  -webkit-text-size-adjust: none
+  font-weight: 600
+  font-size: 16px
+  text-decoration: none
+  white-space: nowrap
+}
+
+@keyframes shine{
+  0%
+    background-position: 0
+  60%
+    background-position: 180px
+  100%
+    background-position: 180px
+}
