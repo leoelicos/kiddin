@@ -25,7 +25,7 @@ const sess = {
   cookie: {
     // maxAge sets the maximum age for the session to be active. Listed in milliseconds.
     // 15 minutes
-    maxAge: 81000,
+    maxAge: 900000,
     // httpOnly tells express-session to only store session cookies when the protocol being used to connect to the server is HTTP
     httpOnly: true,
     // secure tells express-session to only initialize session cookies when the protocol being used is HTTPS. Having this set to be true, and running a server without encryption will
