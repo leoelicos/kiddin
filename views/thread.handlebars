@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-auto">
-    <h2> {{thread.name}}</h2>
+    <h2> {{thread.title}}</h2>
   </div>
 </div>
 
@@ -9,13 +9,16 @@
     <h3>Latest post</h3>
 
     <div>
-      title:{{posts[0].title}}
+      title:{{posts.[0].title}}
     </div>
     <div>
-      text:{{posts[0].Arraytext}}
+      text:{{posts.[0].text}}
     </div>
     <div>
-      Image: {{posts[0].image_url}}
+      <img src="{{posts.[0].image_url}}" alt="latest post image">
+    </div>
+    <div>
+      Posted by: {{posts.[0].user.username}}
     </div>
 
   </div>
@@ -26,12 +29,13 @@
 <div class="col-md-6">
   <div>
     Make a new post
-    <form action="/uploads" method="post" enctype="multipart/form-data">
-      <input placeholder="Item" maxlength="30" type="text" name="title" />
-      <input placeholder="Description" maxlength="200" type="text" name="text" />
-      {{#if thread.id = 1}}
-      <input type="number" name="price" placeholder="price">
+    <form action="/api/posts/uploads" method="post" enctype="multipart/form-data">
+      <input placeholder="Item" maxlength="100" type="text" name="title" />
+      <input placeholder="Description" maxlength="300" type="text" name="text" />
+      {{#if isMarketplace}}
+      <input placeholder="price" maxlength="200" type="number" min="0" name="price" />
       {{/if}}
+      <input style="display: none;" type="text" name="threadId" value="{{thread.id}}" />
       <input type="file" name="upload"> <button type="submit">Submit</button>
     </form>
 

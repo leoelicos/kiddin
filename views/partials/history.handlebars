@@ -1,13 +1,14 @@
 <article>
-   <section>
-      <img src="{{image_url}}" alt="post image">
-   </section>
+	<section>
+		<img src="{{image_url}}" alt="post image">
+	</section>
 	<section>
 		<h3>{{title}}</h3>
 		<p>in {{thread.title}}</p>
 	</section>
 	<section>
-		<p>{{date_format date}}</p>
+		<p>{{format_date date}}</p>
+		<p>{{text}}</p>
 		<p>by {{user.username}}</p>
 	</section>
 </article>

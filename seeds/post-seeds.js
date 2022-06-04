@@ -2,7 +2,7 @@ const { Post } = require('../models');
 
 const postData = [
   {
-    title: 'Buy my baby\'s nappies',
+    title: 'Buy my babys nappies',
     text: 'Half price, brand new, come and get it! 2 packs for only $35.00',
     image_url: 'https://www.bigw.com.au/medias/sys_master/images/images/h25/he8/16831808831518.jpg',
     price: 35.00,
