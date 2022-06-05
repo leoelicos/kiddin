@@ -3,7 +3,7 @@ const { Thread } = require('../models');
 const threadData = [
   {
     title: 'Marketplace: Buy and Sell Baby Stuff',
-    img:'/images/BabyStuff.jpg'
+    img:'/images/baby-items.png'
   },
   {
     title: 'Confessions: What Have I done to my baby?',
