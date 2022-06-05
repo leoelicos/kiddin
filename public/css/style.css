@@ -1,13 +1,17 @@
-
-
-body {
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
     background-image: url('https://i.pinimg.com/564x/b0/e0/60/b0e0600e6cb207dd960a322b3729172d.jpg');
-    /* font-family: 'Fuzzy Bubbles', sans-serif; */
-    font-family: 'Patrick Hand', sans-serif;
-
+    font-family: 'Fuzzy Bubbles', sans-serif;
 }
 
+
 .navbar {
+    width: 100%;
     background: rgb(255,233,246);
     background: linear-gradient(120deg, rgba(255,233,246,1) 6%, rgba(255,182,209,1) 96%);
 }

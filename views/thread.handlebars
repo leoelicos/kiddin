@@ -11,6 +11,9 @@
       <h2>Latest Post</h2>
       <div class="card-body oldpostbody">
         <h4 class="card-title border-bottom border-secondary border-2">{{posts.[0].title}}</h4>
+        {{#if isMarketplace}}
+        <p class="card-text">Price:${{posts.[0].price}}</p>
+        {{/if}}
         <p class="card-text">{{posts.[0].text}}</p>
         <p class="card-text"><small class="text-muted">Posted by {{posts.[0].user.username}}</small></p>
 
@@ -52,18 +55,24 @@
           {{/if}}
           <input style="display: none;" type="text" name="threadId" value="{{thread.id}}" />
           <div class="mb-3">
-            <label for="formFile" class="form-label">Upload an Image</label>
-            <input class="form-control" type="file" name="upload">
+            <label for="formFile" class="form-label">Upload an Image (.jpg files only)</label>
+            <input class="form-control" type="file" accept=".jpg,.jpeg" name="upload">
           </div>
           <button type="submit" class="postbtn btn mb-3">Submit</button>
         </form>
 
       </div>
       <div class="history">
-        <h3>Other Posts</h3>
+        <h3>All Posts</h3>
+        {{#if isMarketplace}}
+        {{#each posts as |post|}}
+        {{>historyMarketplace}}
+        {{/each}}
+        {{else}}
         {{#each posts as |post|}}
         {{>history}}
         {{/each}}
+        {{/if}}
       </div>
 
     </div>

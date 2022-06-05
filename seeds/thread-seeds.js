@@ -2,8 +2,8 @@ const { Thread } = require('../models');
 
 const threadData = [
   {
-    title: 'Buy and Sell Baby Stuff',
-    img:'/images/babyStuff.png'
+    title: 'Marketplace: Buy and Sell Baby Stuff',
+    img:'/images/BabyStuff.jpg'
   },
   {
     title: 'Confessions: What Have I done to my baby?',
