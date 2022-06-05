@@ -1,19 +1,30 @@
+{{!  
+  * Just Kidding
+  * history.handlebars
+  * Contains the markup for a destructured Post, which includes the post.image, post.title, post.text, post.date, and also linked model Thread value of thread.title, and linked model User value of user.username
+  * Copyright 2022 Alicia Santidrian, Jess Huang, Leo Wong
+}}
+
+{{!-- Container for the Post --}}
 <article>
 	<section class="card mb-3" style="max-width: 540px;">
 		<div class="row g-0">
 			<div class="col-md-4">
+				{{!-- Handlebar for destructured post.image_url --}}
 				<img src="{{image_url}}" alt="post image" class="img-fluid rounded-start">
 			</div>
 			<div class="col-md-8">
 				<div class="card-body">
+					{{!-- Handlebar for destructured post.title --}}
 					<h5 class="card-title">{{title}}</h5>
+					{{!-- Handlebar for thread.title --}}
 					<small class="text-muted">in {{thread.title}} </small></p>
+					{{!-- Handlebar for destructured post.text --}}
 					<p class="card-text">{{text}}</p>
-					<p class="card-text"><small class="text-muted"> posted by {{user.username}} on {{format_date
-							date}}</small></p>
+					{{!-- Handlebars for user.username and destructured post.date --}}
+					<p class="card-text"><small class="text-muted"> posted by {{user.username}} on {{format_date date}}</small></p>
 				</div>
 			</div>
 		</div>
 	</section>
-
 </article>

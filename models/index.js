@@ -1,3 +1,10 @@
+/*
+ * Just Kidding
+ * models/index.js
+ * This script contains the necessary code to define the relational database for jk_db
+ * Copyright 2022 Alicia Santidrian, Jess Huang, Leo Wong
+ */
+
 const Thread = require('./Thread');
 const User = require('./User');
 const Post = require('./Post');
@@ -11,7 +18,6 @@ Thread.hasMany(Post, {
   onDelete: 'CASCADE',
 });
 
-
 Post.belongsTo(User, {
   foreignKey: 'user_id',
 });
@@ -20,6 +26,5 @@ User.hasMany(Post, {
   foreignKey: 'user_id',
   onDelete: 'CASCADE',
 });
-
 
 module.exports = { Thread, User, Post };

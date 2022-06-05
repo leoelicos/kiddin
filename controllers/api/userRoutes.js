@@ -1,66 +1,112 @@
+/*
+ * Just Kidding
+ * controllers/api/index.js
+ * Defines '/api/users' CRUD requests
+ * Copyright 2022 Alicia Santidrian, Jess Huang, Leo Wong
+ */
+
+// import express router
 const router = require('express').Router();
-const bcrypt = require('bcrypt');
+
+// import model required in user routes
 const { User } = require('../../models');
 
+// define HTTP Response Status Codes
+const OK = 200;
+const NO_CONTENT = 204;
+const BAD_REQUEST = 400;
+const NOT_FOUND = 404;
+const INTERNAL_SERVER_ERROR = 500;
+
+// Route handler to sign up a user
 router.post('/', async (req, res) => {
-  try {
-    const userData = await User.create(req.body);
+  // Get parameters from req.body
+  const newUser = req.body;
 
+  try {
+
+    // Sequelize API to create a user
+    const userData = await User.create(newUser);
+
+    // Sequelize API to serialize returned object
+    const user = userData.get({ plain: true });
+
+    // Session API to save session variables
     req.session.save(() => {
-      req.session.user_id = userData.id;
+      req.session.user_id = user.id;
       req.session.logged_in = true;
 
-      res.status(200).json(userData);
+      // Respond with user and status OK
+      res.status(OK).json(user);
     });
+
+  // Respond with any error and status BAD_REQUEST
   } catch (err) {
-    res.status(400).json(err);
+    res.status(BAD_REQUEST).json(err);
   }
 });
 
+// Route handler to log in a user
 router.post('/login', async (req, res) => {
+  // get parameters from req.body
+  const { email, password } = req.body;
+
+  // error message for missing user or missing password
+  const missingMessage = 'Incorrect email or password, please try again';
+
+  // validation message for successful login
+  const loggedInMessage = 'You are now logged in!';
+
   try {
-    console.log(req.body);
-    const userData = await User.findOne({ where: { email: req.body.email } });
-    console.log('userData is ', userData);
+
+    // Sequelize API to find one user
+    const userData = await User.findOne({ where: { email } });
+
+    // If the user doesn't exist, respond with NOT FOUND and a message
     if (!userData) {
-      res.status(404).json({ message: 'Incorrect email or password, please try again' });
+      res.status(NOT_FOUND).json({ missingMessage });
       return;
     }
 
-    const validPassword = await userData.checkPassword(req.body.password);
+    // Check the password matches the user
+    const validPassword = userData.checkPassword(password);
 
-
-
-
-    console.log('req body pw is ' , req.body.password,);
-    console.log('user data pw is ' , userData.password);
-
+    // If the password doesn't match the user, respond with BAD REQUEST and a message
     if (!validPassword) {
-      res.status(400).json({ message: 'Incorrect email or password, please try again' });
+      res.status(BAD_REQUEST).json({ missingMessage });
       return;
     }
 
+    // Session API to save session variables
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.status(200).json({ message: 'You are now losgged in!' });
+      // respond with OK and message
+      res.status(OK).json({ loggedInMessage });
     });
 
-    // res.status(200).json({ message: 'You are now logged in!' });
+    // respond with INTERNAL SERVER ERROR and the error
   } catch (err) {
-    res.status(500).json(err);
+    res.status(INTERNAL_SERVER_ERROR).json(err);
   }
 });
 
+// Route handler to log out a user
 router.post('/logout', (req, res) => {
-  if (req.session.logged_in) {
+  // Get login status parameter from session
+  const { logged_in } = req.session;
+
+  // If user is logged in, then log out and return NO CONTENT
+  if (logged_in) {
     req.session.destroy(() => {
-      res.status(204).end();
+      res.status(NO_CONTENT).end();
     });
-  } else {
-    res.status(404).end();
+    return;
   }
+
+  // Return NOT FOUND
+  res.status(NOT_FOUND).end();
 });
 
 module.exports = router;

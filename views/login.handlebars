@@ -1,37 +1,52 @@
-<div class="card-container">
+{{!  
+  * Just Kidding
+  * login.handlebars
+  * Does not actually contain handlebar elements but renders the login and signup containers
+  * Copyright 2022 Alicia Santidrian, Jess Huang, Leo Wong
+}}
 
+<div class="card-container">
     <div class=" card-body row justify-content-center m-4">
+        {{!-- Container for login container --}}
         <div class=" login card-body col-sm-3 border rounded p-3 m-5">
             <h2 class="text-center"> Log In </h2>
             <form class="  login-form">
+                {{!-- email to login --}}
                 <div class="form-group">
-                    <label for="InputEmailLogin">Email address</label>
-                    <input type="email" class="form-control" id="InputEmailLogin" placeholder="Enter email">
+                    <label for="input-email-login">Email address</label>
+                    <input type="email" class="form-control" id="input-email-login" placeholder="Enter email">
                 </div>
+                {{!-- password to login --}}
                 <div class="form-group">
-                    <label for="InputPasswordLogin">Password</label>
-                    <input type="password" class="form-control" id="InputPasswordLogin" placeholder="Password">
+                    <label for="input-password-login">Password</label>
+                    <input type="password" class="form-control" id="input-password-login" placeholder="Password">
                 </div>
+                {{!-- button to login --}}
                 <div class="pt-3">
                     <button type="submit" class=" btn ">Log In</button>
                 </div>
             </form>
         </div>
+        {{!-- Container for signup container --}}
         <div class=" signup card-body col-sm-3 border rounded p-3 m-5">
             <h2 class="text-center"> Sign Up </h2>
             <form class="signup-form">
+                {{!-- new username to signup --}}
                 <div class="form-group">
-                    <label for="InputUsernameSignup">Username</label>
-                    <input type="text" class="form-control" id="InputUsernameSignup" placeholder="Enter Username">
+                    <label for="input-username-signup">Username</label>
+                    <input type="text" class="form-control" id="input-username-signup" placeholder="Enter Username" required>
                 </div>
+                {{!-- new email to signup --}}
                 <div class="form-group">
-                    <label for="InputEmailSignup">Email address</label>
-                    <input type="email" class="form-control" id="InputEmailSignup" placeholder="Enter email">
+                    <label for="input-email-signup">Email address</label>
+                    <input type="email" class="form-control" id="input-email-signup" placeholder="Enter email" required>
                 </div>
+                {{!-- new password to signup --}}
                 <div class="form-group">
-                    <label for="InputPasswordSignup">Password (min. 8 characters)</label>
-                    <input type="password" class="form-control" id="InputPasswordSignup" placeholder="Password" minlength="8">
+                    <label for="input-password-signup">Password (min. 8 characters)</label>
+                    <input type="password" class="form-control" id="input-password-signup" placeholder="Password" minlength="8" required>
                 </div>
+                {{!-- button to signup --}}
                 <div class="pt-3">
                     <button type="submit" class="btn ">Sign Up</button>
                 </div>
@@ -39,4 +54,5 @@
         </div>
     </div>
 </div>
+{{!-- link to login script to handle form submissions --}}
 <script src="./js/login.js"></script>

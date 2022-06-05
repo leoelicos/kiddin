@@ -1,52 +1,92 @@
+/*
+ * Just Kidding
+ * login.js
+ * This script contains the necessary code to allow user to log in, or a new user to sign up
+ * Copyright 2022 Alicia Santidrian, Jess Huang, Leo Wong
+ */
+
+// Function to send POST fetch to login a user
 const loginFormHandler = async (event) => {
+
+  // Prevent default button behaviour that would otherwise reload the page
   event.preventDefault();
 
   // Collect values from the login form
-  const email = document.querySelector('#InputEmailLogin').value.trim();
-  const password = document.querySelector('#InputPasswordLogin').value.trim();
+  const emailEl = document.querySelector('#input-email-login');
+  const email = emailEl.value.trim();
+  const passwordEl = document.querySelector('#input-password-login');
+  const password = passwordEl.value.trim();
 
-  if (email && password) {
-    // Send a POST request to the API endpoint
+  // Check that neither field is empty
+  if (!email || !password) {
+    window.alert('Please check your email and password fields');
+    return;
+  }
+
+  try {
+    // Send POST fetch to api/users/login
     const response = await fetch('/api/users/login', {
       method: 'POST',
       body: JSON.stringify({ email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
-    if (response.ok) {
-      // If successful, redirect the browser to the profile page
-      document.location.replace('/');
-    } else {
-      alert(response.statusText);
+
+    // If the response was not successful, alert the user
+    if (!response.ok) {
+      window.alert(response.statusText);
+      return;
     }
+
+  // Return any error in the console
+  } catch (error) {
+    console.error(error);
   }
+
+  // Send the user to the homepage
+  document.location.replace('/');
 };
 
+// Function to send POST fetch to signup a user
 const signupFormHandler = async (event) => {
+
+  // Prevent default button behaviour that would otherwise reload the page
   event.preventDefault();
 
-  const username = document.querySelector('#InputUsernameSignup').value.trim();
-  const email = document.querySelector('#InputEmailSignup').value.trim();
-  const password = document.querySelector('#InputPasswordSignup').value.trim();
+  // Collect values from the signup form
+  const usernameEl = document.querySelector('#input-username-signup');
+  const username = usernameEl.value.trim();
+  const email = document.querySelector('#input-email-signup').value.trim();
+  const password = document.querySelector('#input-password-signup').value.trim();
 
-  if (username && email && password) {
+  // Check that no fields are empty, although this will also be enforced from the HTML input element
+  if (!username || !email || !password) {
+    window.alert('Please fill in all fields');
+    return;
+  }
+
+  try {
+    // Send POST fetch to api/users
     const response = await fetch('/api/users/', {
       method: 'POST',
       body: JSON.stringify({ username, email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
 
-    if (response.ok) {
-      document.location.replace('/');
-    } else {
-      alert(response.statusText);
+    if (!response.ok) {
+      window.alert(response.statusText);
     }
+
+  // Return any error in the console
+  } catch (error) {
+    console.error(error);
   }
+
+  // Send the user to the homepage
+  document.location.replace('/');
 };
 
-document
-  .querySelector('.login-form')
-  .addEventListener('submit', loginFormHandler);
+// get login form element, add event listener for 'submit', delegate to loginFormHandler
+document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
 
-document
-  .querySelector('.signup-form')
-  .addEventListener('submit', signupFormHandler);
+// get signup form element, add event listener for 'submit', delegate to signupFormHandler
+document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
