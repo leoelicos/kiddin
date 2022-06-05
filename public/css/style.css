@@ -82,6 +82,8 @@ height:auto;
 
 .history{
     overflow:scroll;
+    overflow-y: auto;
+    overflow-x: auto;
 }
 
 .threadtitle{
@@ -98,6 +100,20 @@ header a {
     color:rgba(135, 193, 240, 0.959)
 }
 
+
+.threadnames {
+    text-decoration: none;
+    text-align: center;
+    color:#87c1f0f5
+
+}
+
+ .threadnames:hover{
+    text-decoration: none;
+    text-align: center;
+    color:rgba(240, 124, 145, 0.377)
+
+}
 
 #babylogo {
     animation-duration: 3s;
@@ -154,47 +170,3 @@ header a {
     100%  {color: var(--color-1)}
   }
   
-  /* Here are just some visual styles. 🖌 */
-  
-  .container {
-    display: grid;
-    place-items: center;  
-    text-align: center;
-  }
-  
-  .title {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 800;
-    font-size: 8.5vw;
-    text-transform: uppercase;
-  }
-
-
-.btn-shine {
-  position: absolute
-  top: 50%
-  left: 50%
-  transform: translate(-50%,-50%)
-  padding: 12px 48px
-  color: #ffffff
-  background: linear-gradient(to right, #4d4d4d 0, white 10%, #4d4d4d 20%)
-  background-position: 0
-  -webkit-background-clip: text
-  -webkit-text-fill-color: transparent
-  animation: shine 3s infinite linear
-  animation-fill-mode: forwards
-  -webkit-text-size-adjust: none
-  font-weight: 600
-  font-size: 16px
-  text-decoration: none
-  white-space: nowrap
-}
-
-@keyframes shine{
-  0%
-    background-position: 0
-  60%
-    background-position: 180px
-  100%
-    background-position: 180px
-}
