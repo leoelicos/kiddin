@@ -36,16 +36,16 @@ router.get('/thread/:id', withAuth, async (req, res) => {
             model: Thread,
             attributes: ['title'],
           },
-
         ],
+        order: [ [ 'id', 'DESC' ]]
       });
 
     const postsData = await getPosts(req.params.id);
     const posts = postsData.map((postData)=>postData.get({plain:true}));
- 
+
 
     let isMarketplace=false;
-    if (req.params.id === "1") {
+    if (req.params.id === '1') {
       isMarketplace = true;
     }
 
@@ -56,9 +56,7 @@ router.get('/thread/:id', withAuth, async (req, res) => {
       posts,
       logged_in: req.session.logged_in,
       isMarketplace,
-      where: {
-        order: [['id', 'DESC']]
-      }
+
     });
   } catch (err) {
     res.status(500).json(err);

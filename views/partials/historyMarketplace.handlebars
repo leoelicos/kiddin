@@ -1,0 +1,20 @@
+<article>
+	<section class="card mb-3" style="max-width: 540px;">
+		<div class="row g-0">
+			<div class="col-md-4">
+				<img src="{{image_url}}" alt="post image" class="img-fluid rounded-start">
+			</div>
+			<div class="col-md-8">
+				<div class="card-body">
+					<h5 class="card-title">{{title}}</h5>
+					<p class="card-text">${{price}}</p>
+					<small class="text-muted">in {{thread.title}} </small></p>
+					<p class="card-text">{{text}}</p>
+					<p class="card-text"><small class="text-muted"> posted by {{user.username}} on {{format_date
+							date}}</small></p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</article>
