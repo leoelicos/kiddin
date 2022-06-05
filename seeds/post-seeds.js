@@ -10,6 +10,15 @@ const postData = [
     user_id: 1
   },
   {
+    title: 'Balance Bike',
+    text: 'Balance bike big fun for any baby from 2 years old',
+    image_url: '/images/BalanceBike.jpg',
+    price: 30.00,
+    thread_id: 1,
+    user_id: 1
+  },
+
+  {
     title: 'I ate my baby\'s candy',
     text: 'It was 3am. A dark, hot, hungry woman (me) went downstairs to raid the fridge but there was no food except my baby\'s candy. I\'m such a bad person.',
     image_url: 'https://sites.imsa.edu/acronym/files/2021/10/candy.jpg',
