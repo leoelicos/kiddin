@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Thread } = require('../models');
+const { Thread, Post, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -23,6 +23,7 @@ router.get('/thread/:id', withAuth, async (req, res) => {
 
     const thread = threadData.get({ plain: true });
 
+
     const getPosts = async (id) =>
       Post.findAll({
         where: { thread_id: id },
@@ -31,15 +32,30 @@ router.get('/thread/:id', withAuth, async (req, res) => {
             model: User,
             attributes: ['username'],
           },
+          {
+            model: Thread,
+            attributes: ['title'],
+          },
+
         ],
       });
 
     const postsData = await getPosts(req.params.id);
     const posts = postsData.map((postData)=>postData.get({plain:true}));
-    res.render('threads', {
+ 
+
+    let isMarketplace=false;
+    if (req.params.id === "1") {
+      isMarketplace = true;
+    }
+
+    console.log('is the marketplace true or false' , isMarketplace);
+
+    res.render('thread', {
       thread,
       posts,
       logged_in: req.session.logged_in,
+      isMarketplace,
       where: {
         order: [['id', 'DESC']]
       }

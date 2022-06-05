@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const { Post } = require('../../models');
+const { Post, User, Thread } = require('../../models');
 const withAuth = require('../../utils/auth');
+const path = require('path');
 
 // MULTER STUFF
 // express middleware to support uploading of files
@@ -29,17 +30,27 @@ const upload = multer({ storage, fileFilter });
 
 router.post('/uploads', [withAuth,upload.single('upload')], async (req, res) => {
   try {
-    const src = path.join(__dirname, req.file.path);
-    const newPost = await Post.create({
+    console.log('this is the uploads req ', req.body);
+    console.log('this is the uploads req file ', req.file);
+
+    console.log('thread id', req.body.threadId);
+    console.log('the current session req' , req.session);
+ 
+    const threadId = req.body.threadId
+    const src = '/data/uploads/'+ req.file.filename;
+    await Post.create({
       title: req.body.title,
       text: req.body.text,
       //ADD IN HEROKU URL WHEN KNOWN
       image_url: src,
       price: req.body.price,
       user_id: req.session.user_id,
+      thread_id:threadId
     });
 
-    res.status(200).json(newPost);
+
+
+    res.status(200).redirect('/thread/'+threadId);
   } catch (err) {
     res.status(400).json(err);
   }
