@@ -10,21 +10,21 @@ const { User } = require('../models');
 
 // Define seed data
 const userData = [
-  {
-    username:'Jess',
-    email:'jess@jess.com',
-    password:'jessiscool'
-  },
-  {
-    username:'Leo',
-    email:'leo@leo.com',
-    password:'leoiscool'
-  },
-  {
-    username:'Ali',
-    email:'ali@ali.com',
-    password:'aliiscool'
-  }
+	{
+		username:'Jess',
+		email:'jess@jess.com',
+		password:'jessiscool'
+	},
+	{
+		username:'Leo',
+		email:'leo@leo.com',
+		password:'leoiscool'
+	},
+	{
+		username:'Ali',
+		email:'ali@ali.com',
+		password:'aliiscool'
+	}
 
 ];
 

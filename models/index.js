@@ -10,21 +10,21 @@ const User = require('./User');
 const Post = require('./Post');
 
 Post.belongsTo(Thread, {
-  foreignKey: 'thread_id',
+	foreignKey: 'thread_id',
 });
 
 Thread.hasMany(Post, {
-  foreignKey: 'thread_id',
-  onDelete: 'CASCADE',
+	foreignKey: 'thread_id',
+	onDelete: 'CASCADE',
 });
 
 Post.belongsTo(User, {
-  foreignKey: 'user_id',
+	foreignKey: 'user_id',
 });
 
 User.hasMany(Post, {
-  foreignKey: 'user_id',
-  onDelete: 'CASCADE',
+	foreignKey: 'user_id',
+	onDelete: 'CASCADE',
 });
 
 module.exports = { Thread, User, Post };
