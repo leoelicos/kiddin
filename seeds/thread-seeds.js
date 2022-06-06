@@ -1,5 +1,14 @@
+/*
+ * Just Kidding
+ * seeds/thread-seeds.js
+ * This script contains the seeds for the Thread entity
+ * Copyright 2022 Alicia Santidrian, Jess Huang, Leo Wong
+ */
+
+// Import model required in seeds
 const { Thread } = require('../models');
 
+// Define seed data
 const threadData = [
   {
     title: 'Marketplace: Buy and Sell Baby Stuff',
@@ -15,6 +24,8 @@ const threadData = [
   },
 ];
 
+// Seed function using Sequelize API to create multiple threads
 const seedThread = () => Thread.bulkCreate(threadData);
 
+// Export seed function
 module.exports = seedThread;

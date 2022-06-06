@@ -1,5 +1,14 @@
+/*
+ * Just Kidding
+ * seeds/post-seeds.js
+ * This script contains the seeds for the Post entity
+ * Copyright 2022 Alicia Santidrian, Jess Huang, Leo Wong
+ */
+
+// Import model required in seeds
 const { Post } = require('../models');
 
+// Define seed data
 const postData = [
   {
     title: 'Buy my babys nappies',
@@ -34,6 +43,8 @@ const postData = [
   }
 ];
 
+// Seed function using Sequelize API to create multiple posts
 const seedPosts = () => Post.bulkCreate(postData);
 
+// Export seed function
 module.exports = seedPosts;

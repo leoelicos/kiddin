@@ -1,12 +1,25 @@
+/*
+ * Just Kidding
+ * models/Post.js
+ * This model defines entity Post
+ * Copyright 2022 Alicia Santidrian, Jess Huang, Leo Wong
+ */
+
+// Sequelize API to import database classes
 const { Model, DataTypes } = require('sequelize');
+
+// Sequelize API to import SQL connection
 const sequelize = require('../config/connection');
 
+// Create new class that extends Sequelize Model
 class Post extends Model {}
 
+// Sequelize API to initialize an entity
 Post.init(
   {
     id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
@@ -53,4 +66,5 @@ Post.init(
   }
 );
 
+// Export Post model
 module.exports = Post;

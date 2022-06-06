@@ -1,22 +1,33 @@
-<div class="p-2 main ">
+{{!  
+  * Just Kidding
+  * homepage.handlebars
+  * Contains handlebars to render every thread
+  * Copyright 2022 Alicia Santidrian, Jess Huang, Leo Wong
+}}
 
-    <h2 class="text-center btn-shine">
-        Welcome to Just KIDding~
-    </h2>
+{{!-- Container for the welcome message --}}
+<div class="p-2 hero-message ">
+    {{!-- Welcome message short --}}
+    <h2 class="text-center btn-shine">Welcome to Just KIDding~</h2>
+    {{!-- Welcome message long --}}
     <h4 class="text-center ">
         Whether you're a bored parent or need to find some items on the marketplace, taking care of your child has never
         been more fun.
     </h4>
 </div>
-
+{{!-- Container for the threads --}}
 <div class="row row-cols-3 g-4">
+    {{!-- Handlebar to iterate through each thread  --}}
     {{#each threads as |thread|}}
-    <div class=" col-12 col-md-4 ">
+    <div class="col-12 col-md-4 ">
         <div class="card border rounded m-4">
-            <a class="threadnames" href="/thread/{{id}}">
+            {{!-- Handlebar to link to thread using destructured thread.id --}}
+            <a class="thread-names" href="/thread/{{id}}">
+                {{!-- Handlebar to render thread image using destructured thread.img --}}
                 <img class=" card-img-top rounded-1" src="{{img}}" alt="Card image cap">
                 <div class="card-body">
-                    <p class="card-text ">{{title}}</p>
+                    {{!-- Handlebar to render destructured thread.title --}}
+                    <p class="card-text">{{title}}</p>
                 </div>
             </a>
         </div>

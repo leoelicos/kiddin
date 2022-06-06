@@ -28,7 +28,7 @@ We made this application to learn about full-stack applications created with Mod
 
 ## Usage
 
-Visit [Just Kidding](https://leoelicos-just-kidding.herokuapp.com/) on a browser on a computer or mobile.
+Visit [Just Kidding](https://just-kidding-baby.herokuapp.com/) on a browser on a computer or mobile.
 
 | Step               | Details                                                                                              |
 | ------------------ | ---------------------------------------------------------------------------------------------------- |
@@ -47,15 +47,23 @@ Video is also on YouTube: TBA
 
 ### Screenshot: Just Kidding — Threads
 
-![Screenshot: Just Kidding — Threads](TBA)
-
-### Screenshot: Just Kidding — Thread Posts
-
-![Screenshot: Just Kidding — Thread Posts](TBA)
+![Screenshot: Just Kidding — Threads](https://user-images.githubusercontent.com/99461390/172051490-e53992be-c994-4055-b156-42a0329b514d.jpg)
 
 ### Screenshot: Just Kidding — Login / Sign in
 
-![Screenshot: Just Kidding — Login / Sign in](TBA)
+![Screenshot: Just Kidding — Login / Sign in](https://user-images.githubusercontent.com/99461390/172051537-aff7fcae-f4fd-440c-8a0d-00d36b31679b.jpg)
+
+### Screenshot: Just Kidding — Thread — Marketplace
+
+![Screenshot: Just Kidding — Thread — Marketplace](https://user-images.githubusercontent.com/99461390/172051539-d599fee1-9ee1-4caf-a480-fd25bc764329.jpg)
+
+### Screenshot: Just Kidding — Thread — Confessions
+
+![Screenshot: Just Kidding — Thread — Confessions](https://user-images.githubusercontent.com/99461390/172051541-6d3da96f-9e0f-4a9a-96b2-8d568114ea73.jpg)
+
+### Screenshot: Just Kidding — Thread — Guess what
+
+![Screenshot: Just Kidding — Thread — Guess what](https://user-images.githubusercontent.com/99461390/172051545-483253aa-e966-4a4f-94d3-2819ac243185.jpg)
 
 ## Installation for API testing in Insomnia
 

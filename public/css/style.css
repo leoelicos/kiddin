@@ -1,172 +1,204 @@
-html,body
-{
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-    overflow-x: hidden; 
-    background-image: url('https://i.pinimg.com/564x/b0/e0/60/b0e0600e6cb207dd960a322b3729172d.jpg');
-    font-family: 'Fuzzy Bubbles', sans-serif;
+/*
+ * Just Kidding
+ * css/style.css
+ * This sheet contains the necessary code to style the following handlebars
+    * layouts/main.handlebars
+    * homepage.handlebars
+    * login.handlebars
+    * thread.handlebars
+    * partials/history.handlebars
+    * partials/historyMarketplace.handlebars
+ * Copyright 2022 Alicia Santidrian, Jess Huang, Leo Wong
+ */
+
+/* 
+ * SEMANTIC ELEMENTS
+*/
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	overflow-x: hidden;
+	background-image: url('https://i.pinimg.com/564x/b0/e0/60/b0e0600e6cb207dd960a322b3729172d.jpg');
+	font-family: 'Fuzzy Bubbles', sans-serif;
 }
 
-
-.navbar {
-    width: 100%;
-    background: rgb(255,233,246);
-    background: linear-gradient(120deg, rgba(255,233,246,1) 6%, rgba(255,182,209,1) 96%);
-}
-
-
-
-.card {
-height:auto;
-}
-
-.card-container .login {
-    background-color: rgba(105, 202, 247, 0.418);
-    color: rgb(0, 0, 0);
-}
-
-.card-container .signup {
-    background-color: rgba(255, 208, 216, 0.801);
-    color: rgb(0, 0, 0);
-}
-
-.newpost{
-    background-color:rgba(255, 226, 231, 0.795);
-    color: rgb(0, 0, 0);
-    box-shadow: 12px 12px 2px 1px rgba(240, 124, 145, 0.377);
-
-}
-
-
-.oldpost{
-    background-color:rgba(204, 238, 253, 0.76);
-    color: rgb(0, 0, 0);
-    box-shadow: 12px 12px 2px 1px rgba(135, 192, 240, 0.623);
-
-}
-
-
-.oldpostbody{
-    background-color:rgba(245, 252, 255, 0.76);
-    color: rgb(0, 0, 0);
-    border-radius: 10px;
-
-}
-
-.formclass{
-    background-color:rgba(255, 245, 255, 0.76);
-    color: rgb(0, 0, 0);
-    border-radius: 10px;
-}
-
-.border {
-    box-shadow: 12px 12px 2px 1px rgba(240, 124, 145, 0.377);
-
-}
-
-.login .btn {
-    background-color:rgb(248, 201, 209);
-}
-
-.postbtn{
-    background-color:rgb(201, 237, 248);
-}
-
-
-.signup .btn {
-    background-color: rgb(144, 220, 255);
-   
-}
-
-.history{
-    overflow:scroll;
-    overflow-y: auto;
-    overflow-x: auto;
-}
-
-.threadtitle{
-    background-color:rgba(255, 255, 255, 0.582);
-    color:rgba(135, 193, 240, 0.959)
+header {
+	width: 100%;
+	background: rgb(255, 233, 246);
+	background: linear-gradient(120deg, rgba(255, 233, 246, 1) 6%, rgba(255, 182, 209, 1) 96%);
 }
 
 header a {
-    text-decoration: none;
+	text-decoration: none;
 }
 
-.main {
-    background-color:rgba(255, 255, 255, 0.582);
-    color:rgba(135, 193, 240, 0.959)
+/* 
+ * CLASSES
+*/
+
+.card {
+	height: auto;
 }
 
-
-.threadnames {
-    text-decoration: none;
-    text-align: center;
-    color:#87c1f0f5
-
+.card-container .login {
+	background-color: rgba(105, 202, 247, 0.418);
+	color: rgb(0, 0, 0);
 }
 
- .threadnames:hover{
-    text-decoration: none;
-    text-align: center;
-    color:#d67788
-
+.card-container .signup {
+	background-color: rgba(255, 208, 216, 0.801);
+	color: rgb(0, 0, 0);
 }
 
-#babylogo {
-    animation-duration: 3s;
-    animation-name: slidein;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    min-width: 5rem;
-  }
+.new-post {
+	background-color: rgba(255, 226, 231, 0.795);
+	color: rgb(0, 0, 0);
+	box-shadow: 12px 12px 2px 1px rgba(240, 124, 145, 0.377);
+}
 
-  @keyframes slidein {
-    from {
-      margin-left: 50%;
-      width: 10%;
-    }
-  
-    to {
-      margin-left: 0%;
-      width: 10%;
-    }
-  }
+.old-post {
+	background-color: rgba(204, 238, 253, 0.76);
+	color: rgb(0, 0, 0);
+	box-shadow: 12px 12px 2px 1px rgba(135, 192, 240, 0.623);
+}
 
+.old-post-body {
+	background-color: rgba(245, 252, 255, 0.76);
+	color: rgb(0, 0, 0);
+	border-radius: 10px;
+}
 
-  .title-word {
-    animation: color-animation 4s linear infinite;
-  }
-  
-  .title-word-1 {
-    --color-1: #DF8453;
-    --color-2: #3D8DAE;
-    --color-3: #E4A9A8;
-  }
-  
-  .title-word-2 {
-    --color-1: #DBAD4A;
-    --color-2: #ACCFCB;
-    --color-3: #17494D;
-  }
-  
-  .title-word-3 {
-    --color-1: #ACCFCB;
-    --color-2: #E4A9A8;
-    --color-3: #ACCFCB;
-  }
-  
+.upload-form {
+	background-color: rgba(255, 245, 255, 0.76);
+	color: rgb(0, 0, 0);
+	border-radius: 10px;
+}
 
-  
-  @keyframes color-animation {
-    0%    {color: var(--color-1)}
-    32%   {color: var(--color-1)}
-    33%   {color: var(--color-2)}
-    65%   {color: var(--color-2)}
-    66%   {color: var(--color-3)}
-    99%   {color: var(--color-3)}
-    100%  {color: var(--color-1)}
-  }
-  
+.border {
+	box-shadow: 12px 12px 2px 1px rgba(240, 124, 145, 0.377);
+}
+
+.login .btn {
+	background-color: rgb(248, 201, 209);
+}
+
+.post-btn {
+	background-color: rgb(201, 237, 248);
+}
+
+.signup .btn {
+	background-color: rgb(144, 220, 255);
+}
+
+.history {
+	overflow: scroll;
+	overflow-y: auto;
+	overflow-x: auto;
+}
+
+.thread-title {
+	background-color: rgba(255, 255, 255, 0.582);
+	color: rgba(135, 193, 240, 0.959);
+}
+
+.hero-message {
+	background-color: rgba(255, 255, 255, 0.582);
+	color: rgba(135, 193, 240, 0.959);
+}
+
+.thread-names {
+	text-decoration: none;
+	text-align: center;
+	color: #87c1f0f5;
+}
+
+.thread-names:hover {
+	text-decoration: none;
+	text-align: center;
+	color: #d67788;
+}
+
+/* Logo: color animation */
+.title-word {
+	animation: color-animation 4s linear infinite;
+}
+
+/* Logo: colors for 'just' */
+.title-word-1 {
+	--color-1: #df8453;
+	--color-2: #3d8dae;
+	--color-3: #e4a9a8;
+}
+
+/* Logo: colors for 'KID' */
+.title-word-2 {
+	--color-1: #dbad4a;
+	--color-2: #accfcb;
+	--color-3: #17494d;
+}
+
+/* Logo: colors for 'ding' */
+.title-word-3 {
+	--color-1: #accfcb;
+	--color-2: #e4a9a8;
+	--color-3: #accfcb;
+}
+
+/* 
+ * IDs
+*/
+
+/* Logo: baby */
+#baby-logo {
+	animation-duration: 3s;
+	animation-name: slidein;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	min-width: 5rem;
+}
+
+/* 
+ * ANIMATIONS
+*/
+
+/* Logo: baby-sliding animation */
+@keyframes slidein {
+	from {
+		margin-left: 50%;
+		width: 10%;
+	}
+
+	to {
+		margin-left: 0%;
+		width: 10%;
+	}
+}
+
+/* Logo: color-alternating animation */
+@keyframes color-animation {
+	0% {
+		color: var(--color-1);
+	}
+	32% {
+		color: var(--color-1);
+	}
+	33% {
+		color: var(--color-2);
+	}
+	65% {
+		color: var(--color-2);
+	}
+	66% {
+		color: var(--color-3);
+	}
+	99% {
+		color: var(--color-3);
+	}
+	100% {
+		color: var(--color-1);
+	}
+}
