@@ -39,7 +39,11 @@ Visit [Just Kidding](https://just-kidding-baby.herokuapp.com/) on a browser on a
 
 ### Video Demo:
 
-TBA
+
+
+https://user-images.githubusercontent.com/99526851/172156823-c500dd41-41d5-413c-97c5-9a7ccd058659.mp4
+
+
 
 Video is also on YouTube: TBA
 
