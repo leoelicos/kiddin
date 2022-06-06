@@ -30,11 +30,11 @@
         "no-redeclare": "error",
         "brace-style": "error",
         "indent": [
-            "error",
-            2
+            1,
+            "tab"
         ],
         "quotes": [
-            "error",
+            0,
             "single"
         ],
         "semi": [
