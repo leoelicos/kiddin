@@ -45,7 +45,7 @@ https://user-images.githubusercontent.com/99526851/172156823-c500dd41-41d5-413c-
 
 
 
-Video is also on YouTube: TBA
+Video is also on YouTube: https://youtu.be/Mb-67rsdZvc
 
 ## Screenshots
 
