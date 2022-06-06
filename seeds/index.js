@@ -19,27 +19,27 @@ const sequelize = require('../config/connection');
 
 // Execute seed methods in order
 const seedAll = async () => {
-  try {
-    // Sequelize API to initiate SQL connection
-    await sequelize.sync({ force: true });
+	try {
+		// Sequelize API to initiate SQL connection
+		await sequelize.sync({ force: true });
 
-    // Seed Threads
-    await seedThreads();
+		// Seed Threads
+		await seedThreads();
 
-    // Seed Users
-    await seedUsers();
+		// Seed Users
+		await seedUsers();
 
-    // Seed Posts
-    await seedPosts();
+		// Seed Posts
+		await seedPosts();
 
-  // return any error
-  } catch (error) {
-    console.error(error);
+		// return any error
+	} catch (error) {
+		console.error(error);
 
-  // exit the script
-  } finally {
-    process.exit(0);
-  }
+		// exit the script
+	} finally {
+		process.exit(0);
+	}
 };
 
 seedAll();
