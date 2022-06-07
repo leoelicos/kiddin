@@ -39,31 +39,31 @@
           <div class="row">
             <div class="mb-3 col">
               <label class="form-label">Item</label>
-              <input placeholder="Baby nappies..." maxlength="100" class="form-control" type="text" name="title" />
+              <input placeholder="Baby nappies..." maxlength="100" class="form-control" type="text" name="title" required/>
             </div>
             <div class="mb-3 col">
               <label class="form-label">Price</label>
-              <input placeholder="$" class="form-control" type="number" step="any" min="0" name="price" />
+              <input placeholder="$" class="form-control" type="number" step="any" min="0" name="price" required/>
             </div>
           </div>
           <div class="mb-3">
             <label class="form-label">Description</label>
-            <input placeholder="Describe your item" class="form-control" maxlength="300" type="text" name="text" />
+            <input placeholder="Describe your item" class="form-control" maxlength="300" type="text" name="text" required/>
           </div>
           {{else}}
           <div class="mb-3">
-            <label class="form-label"> Title</label>
-            <input placeholder="Interesting story" maxlength="100" class="form-control" type="text" name="title" />
+            <label class="form-label">Title</label>
+            <input placeholder="Interesting story" maxlength="100" class="form-control" type="text" name="title" required/>
           </div>
           <div class="mb-3">
             <label class="form-label">Description</label>
-            <input placeholder="Describe what happened" class="form-control" maxlength="300" type="text" name="text" />
+            <input placeholder="Describe what happened" class="form-control" maxlength="300" type="text" name="text" required />
           </div>
           {{/if}}
           <input style="display: none;" type="text" name="threadId" value="{{thread.id}}" />
           <div class="mb-3">
             <label for="formFile" class="form-label">Upload an Image (.jpg files only)</label>
-            <input class="form-control" type="file" accept=".jpg,.jpeg" name="upload">
+            <input class="form-control" type="file" accept=".jpg,.jpeg" name="upload" required>
           </div>
           <button type="submit" class="post-btn btn mb-3">Submit</button>
         </form>

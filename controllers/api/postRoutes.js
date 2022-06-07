@@ -29,7 +29,10 @@ const multer = require('multer');
 // multer middleware to filter non-JPG files
 const fileFilter = (req, file, cb) => {
 	// conditional to detect JPG and JPEG
-	if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/jpg') {
+	if (!file) {
+		// multer API to reject file upload
+		cb(null, false);
+	} else if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/jpg') {
 		// multer API to execute file upload
 		cb(null, true);
 	} else {
