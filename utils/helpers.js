@@ -1,10 +1,3 @@
-/*
- * Just Kidding
- * utils/helpers.js
- * This script contains function which format a UNIX date into strings with weekdays, years, months and days
- * Copyright 2022 Alicia Santidrian, Jess Huang, Leo Wong
- */
-
 module.exports = {
 	// Format date as DD/MM/YYYY
 	format_date: (date) => {

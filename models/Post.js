@@ -1,10 +1,3 @@
-/*
- * Just Kidding
- * models/Post.js
- * This model defines entity Post
- * Copyright 2022 Alicia Santidrian, Jess Huang, Leo Wong
- */
-
 // Sequelize API to import database classes
 const { Model, DataTypes } = require('sequelize');
 

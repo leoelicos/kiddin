@@ -1,10 +1,3 @@
-/*
- * Just Kidding
- * seeds/index.js
- * This script contains the necessary code to coordinate the seeds
- * Copyright 2022 Alicia Santidrian, Jess Huang, Leo Wong
- */
-
 // Import seedThreads method
 const seedThreads = require('./thread-seeds');
 

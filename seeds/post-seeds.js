@@ -1,10 +1,3 @@
-/*
- * Just Kidding
- * seeds/post-seeds.js
- * This script contains the seeds for the Post entity
- * Copyright 2022 Alicia Santidrian, Jess Huang, Leo Wong
- */
-
 // Import model required in seeds
 const { Post } = require('../models');
 

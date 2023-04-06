@@ -1,10 +1,3 @@
-/*
- * Just Kidding
- * controllers/homeRoutes.js
- * Define /, /thread/:id and /login routes
- * Copyright 2022 Alicia Santidrian, Jess Huang, Leo Wong
- */
-
 // import express router
 const router = require('express').Router();
 
