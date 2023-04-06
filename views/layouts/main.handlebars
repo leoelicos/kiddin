@@ -1,10 +1,3 @@
-{{!
-* Just Kidding
-* main.handlebars
-* Contains the markup for the Header, which includes the logo and login/logout link
-* Contains a template literal to include other handlebars
-* Copyright 2022 Alicia Santidrian, Jess Huang, Leo Wong
-}}
 <html lang='en'>
 
 <head>
@@ -14,9 +7,9 @@
   <meta http-equiv='X-UA-Compatible' content='IE=edge' />
   {{! Control layout on mobile browsers }}
   <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-  {{! Just Kidding Title }}
-  <title>justKIDding</title>
-  {{! Just Kidding Favicon }}
+  {{! Kiddin Title }}
+  <title>kiddin</title>
+  {{! Kiddin Favicon }}
   <link rel='shortcut icon' href='/images/babyIcon.jpg' type='image/x-icon' />
   {{!-- Bootstrap --}}
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -36,13 +29,13 @@
         {{! Logo text }}
         <div class="col-4 text-start">
           <a href='/' class='display-4 link-light page-title '>
-            <span class="title-word title-word-1">just</span>
-            <span class="title-word title-word-2">KID</span><span class="title-word title-word-3">ding</span>
+            <span class="title-word title-word-1">ki</span>
+            <span class="title-word title-word-2">dd</span><span class="title-word title-word-3">in</span>
           </a>
         </div>
         {{! Logo baby }}
         <div class="col-6">
-          <img id="baby-logo" src="/images/happy-baby.png" alt="justkiddingbaby">
+          <img id="baby-logo" src="/images/happy-baby.png" alt="kiddin">
         </div>
         {{! Handlebar to conditionally render Logout/Login button }}
         {{#if logged_in}}

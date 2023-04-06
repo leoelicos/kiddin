@@ -1,10 +1,3 @@
-/*
- * Just Kidding
- * login.js
- * This script contains the necessary code to allow user to log in, or a new user to sign up
- * Copyright 2022 Alicia Santidrian, Jess Huang, Leo Wong
- */
-
 // Function to send POST fetch to login a user
 const loginFormHandler = async (event) => {
 

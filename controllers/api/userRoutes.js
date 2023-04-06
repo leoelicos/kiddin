@@ -1,10 +1,3 @@
-/*
- * Just Kidding
- * controllers/api/index.js
- * Defines '/api/users' CRUD requests
- * Copyright 2022 Alicia Santidrian, Jess Huang, Leo Wong
- */
-
 // import express router
 const router = require('express').Router();
 

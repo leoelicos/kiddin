@@ -1,10 +1,3 @@
-/*
- * Just Kidding
- * models/User.js
- * This model defines entity User
- * Copyright 2022 Alicia Santidrian, Jess Huang, Leo Wong
- */
-
 // Sequelize API to import database classes
 const { Model, DataTypes } = require('sequelize');
 

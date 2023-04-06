@@ -1,10 +1,3 @@
-/*
- * Just Kidding
- * login.js
- * This script contains the necessary code to allow a logged-in user to log out
- * Copyright 2022 Alicia Santidrian, Jess Huang, Leo Wong
- */
-
 // Function to send POST fetch to logout a user
 const logout = async () => {
 	try {

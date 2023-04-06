@@ -1,9 +1,3 @@
-/*
- * Just Kidding
- * This script contains the necessary code to implement the server for Just Kidding
- * Copyright 2022 Alicia Santidrian, Jess Huang, Leo Wong
- */
-
 const path = require('path');
 const express = require('express');
 const session = require('express-session');

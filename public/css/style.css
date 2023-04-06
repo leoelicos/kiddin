@@ -1,16 +1,3 @@
-/*
- * Just Kidding
- * css/style.css
- * This sheet contains the necessary code to style the following handlebars
-    * layouts/main.handlebars
-    * homepage.handlebars
-    * login.handlebars
-    * thread.handlebars
-    * partials/history.handlebars
-    * partials/historyMarketplace.handlebars
- * Copyright 2022 Alicia Santidrian, Jess Huang, Leo Wong
- */
-
 /* 
  * SEMANTIC ELEMENTS
 */
@@ -127,21 +114,21 @@ header a {
 	animation: color-animation 4s linear infinite;
 }
 
-/* Logo: colors for 'just' */
+/* Logo: colors for 'ki' */
 .title-word-1 {
 	--color-1: #df8453;
 	--color-2: #3d8dae;
 	--color-3: #e4a9a8;
 }
 
-/* Logo: colors for 'KID' */
+/* Logo: colors for 'di' */
 .title-word-2 {
 	--color-1: #dbad4a;
 	--color-2: #accfcb;
 	--color-3: #17494d;
 }
 
-/* Logo: colors for 'ding' */
+/* Logo: colors for 'in' */
 .title-word-3 {
 	--color-1: #accfcb;
 	--color-2: #e4a9a8;
