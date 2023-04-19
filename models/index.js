@@ -1,10 +1,10 @@
-const Thread = require('./Thread');
-const User = require('./User');
-const Post = require('./Post');
+import  Thread from './Thread.js';
+import User from './User.js';
+import Post from './Post.js';
 
 Post.belongsTo(Thread, {
 	foreignKey: 'thread_id',
-});
+}); 
 
 Thread.hasMany(Post, {
 	foreignKey: 'thread_id',
@@ -20,4 +20,4 @@ User.hasMany(Post, {
 	onDelete: 'CASCADE',
 });
 
-module.exports = { Thread, User, Post };
+export    { Thread, User, Post };

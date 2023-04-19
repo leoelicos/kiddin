@@ -1,14 +1,14 @@
 // Import seedThreads method
-const seedThreads = require('./thread-seeds');
+import  seedThreads from './thread-seeds.js';
 
 // Import seedUsers method
-const seedUsers = require('./user-seeds');
+import seedUsers from './user-seeds.js';
 
 // Import seedPosts method
-const seedPosts = require('./post-seeds');
+import seedPosts from './post-seeds.js';
 
 // Sequelize API to import SQL connection
-const sequelize = require('../config/connection');
+import sequelize from '../config/connection.js';
 
 // Execute seed methods in order
 const seedAll = async () => {

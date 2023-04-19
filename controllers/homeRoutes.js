@@ -1,11 +1,13 @@
 // import express router
-const router = require('express').Router();
+import express from 'express'
 
 // import models required in routes
-const { Thread, Post, User } = require('../models');
+import { Thread, Post, User } from'../models/index.js';
 
 // import custom middleware to redirect users if they are not logged in
-const withAuth = require('../utils/auth');
+import withAuth from '../utils/auth.js'; 
+
+const router = express.Router();
 
 // define HTTP Response Status Codes
 const INTERNAL_SERVER_ERROR = 500;
@@ -96,4 +98,4 @@ router.get('/login', (req, res) => {
 	res.render('login');
 });
 
-module.exports = router;
+export default router;

@@ -1,5 +1,5 @@
 // Import model required in seeds
-const { User } = require('../models');
+import  { User } from '../models/index.js';
 
 // Define seed data
 const userData = [
@@ -26,4 +26,4 @@ const userData = [
 const seedUser = () => User.bulkCreate(userData, {individualHooks: true});
 
 // Export seed function
-module.exports = seedUser;
+export default seedUser;

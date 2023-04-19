@@ -1,8 +1,10 @@
 // import express router
-const router = require('express').Router();
+import express from 'express'
 
 // import model required in user routes
-const { User } = require('../../models');
+import { User } from '../../models/index.js';
+
+const router = express.Router();
 
 // define HTTP Response Status Codes
 const OK = 200;
@@ -102,4 +104,4 @@ router.post('/logout', (req, res) => {
 	res.status(NOT_FOUND).end();
 });
 
-module.exports = router;
+export default router;

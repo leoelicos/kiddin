@@ -1,5 +1,5 @@
 // Import model required in seeds
-const { Thread } = require('../models');
+import { Thread } from'../models/index.js';
 
 // Define seed data
 const threadData = [
@@ -21,4 +21,4 @@ const threadData = [
 const seedThread = () => Thread.bulkCreate(threadData);
 
 // Export seed function
-module.exports = seedThread;
+export default seedThread;

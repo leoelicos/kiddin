@@ -1,8 +1,8 @@
 // Sequelize API to import database classes
-const { Model, DataTypes } = require('sequelize');
+import { Model, DataTypes } from 'sequelize';
 
 // Sequelize API to import SQL connection
-const sequelize = require('../config/connection');
+import sequelize from '../config/connection.js';
 
 // Create new class that extends Sequelize Model
 class Post extends Model {}
@@ -60,4 +60,4 @@ Post.init(
 );
 
 // Export Post model
-module.exports = Post;
+export default Post;

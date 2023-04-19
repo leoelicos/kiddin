@@ -1,11 +1,11 @@
 // Sequelize API to import database classes
-const { Model, DataTypes } = require('sequelize');
+import { Model, DataTypes } from 'sequelize';
 
 // Import bcrypt utility to encrypt password
-const bcrypt = require('bcrypt');
+import bcrypt from 'bcrypt';
 
 // Sequelize API to import SQL connection
-const sequelize = require('../config/connection');
+import  sequelize from '../config/connection.js';
 
 // Create new class that extends Sequelize Model
 class User extends Model {
@@ -70,4 +70,4 @@ User.init(
 );
 
 // Export User model
-module.exports = User;
+export default User;

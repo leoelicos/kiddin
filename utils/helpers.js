@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 	// Format date as DD/MM/YYYY
 	format_date: (date) => {
 		return date.toLocaleDateString();
