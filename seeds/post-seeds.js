@@ -1,5 +1,5 @@
 // Import model required in seeds
-const { Post } = require('../models');
+import  { Post } from '../models/index.js';
 
 const THREAD_MARKETPLACE = 1;
 const THREAD_CONFESSIONS = 2;
@@ -78,4 +78,4 @@ const postData = [
 const seedPosts = () => Post.bulkCreate(postData);
 
 // Export seed function
-module.exports = seedPosts;
+export default seedPosts;

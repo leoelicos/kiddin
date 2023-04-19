@@ -1,14 +1,19 @@
 // import express router
-const router = require('express').Router();
+import express from 'express'
 
 // import model required in post routes
-const { Post } = require('../../models');
+import  { Post } from '../../models/index.js';
 
 // import custom middleware to redirect users if they are not logged in
-const withAuth = require('../../utils/auth');
+import  withAuth from '../../utils/auth.js';
 
 // import Node utility for working with file and directory paths
-const path = require('path');
+import  path from 'path';
+
+// import middleware to support uploading of files
+import multer from 'multer';
+
+const router = express.Router();
 
 // define HTTP Response Status Codes
 const OK = 200;
@@ -16,8 +21,7 @@ const BAD_REQUEST = 400;
 const NOT_FOUND = 404;
 const INTERNAL_SERVER_ERROR = 500;
 
-// import middleware to support uploading of files
-const multer = require('multer');
+
 
 // multer middleware to filter non-JPG files
 const fileFilter = (req, file, cb) => {
@@ -120,4 +124,4 @@ router.delete('/:id', withAuth, async (req, res) => {
 	}
 });
 
-module.exports = router;
+export default router;

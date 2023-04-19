@@ -15,4 +15,4 @@ const withAuth = (req, res, next) => {
 };
 
 // Export the custom middleware function
-module.exports = withAuth;
+export default withAuth;

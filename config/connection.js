@@ -1,8 +1,9 @@
 // import Sequelize object
-const Sequelize = require('sequelize');
+import Sequelize from 'sequelize';
 
 // load .env file contents into process.env
-require('dotenv').config();
+import dotenv from 'dotenv'
+dotenv.config();
 
 // create new Sequelize object depending on whether Heroku is used
 let sequelize;
@@ -25,4 +26,4 @@ if (process.env.JAWSDB_URL) {
 	);
 }
 
-module.exports = sequelize;
+export default sequelize;

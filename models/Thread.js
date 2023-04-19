@@ -1,8 +1,8 @@
 // Sequelize API to import database classes
-const { Model, DataTypes } = require('sequelize');
+import { Model, DataTypes } from 'sequelize';
 
 // Sequelize API to import SQL connection
-const sequelize = require('../config/connection');
+import sequelize from '../config/connection.js';
 
 // Create new class that extends Sequelize Model
 class Thread extends Model { }
@@ -35,4 +35,4 @@ Thread.init(
 );
 
 // Export Thread model
-module.exports = Thread;
+export default Thread;

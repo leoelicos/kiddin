@@ -1,8 +1,11 @@
-const router = require('express').Router();
-const postRoutes = require('./postRoutes');
-const userRoutes = require('./userRoutes');
+import express from 'express'
+
+import postRoutes from './postRoutes.js';
+import  userRoutes from './userRoutes.js';
+
+const router = express.Router()
 
 router.use('/posts', postRoutes);
 router.use('/users', userRoutes);
 
-module.exports = router;
+export default router;
