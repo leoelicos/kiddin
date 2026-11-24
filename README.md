@@ -14,7 +14,7 @@ Kiddin’ is a full-stack app where signed-in parents browse threads and post a 
 | Styling  | Hand-written modern CSS: design tokens with `light-dark()`, container queries, `:has()`, scroll-driven animations, `color-mix()` |
 | Type     | Bricolage Grotesque (display) and Atkinson Hyperlegible Next (body, designed for low-vision readers), self-hosted via Fontsource |
 | API      | Express 5 on Node ≥ 22.18, running TypeScript directly (native type stripping, no build step)                                    |
-| Data     | Sequelize 6 on MySQL (prod), or zero-config SQLite in dev/test. Same tables and columns as v1                                    |
+| Data     | Sequelize 6 on Postgres (e.g. Neon) or MySQL in prod, or zero-config SQLite in dev/test. Same tables and columns as v1           |
 | Security | helmet (strict CSP), rate-limited auth, session regeneration, bcrypt, zod validation, EXIF/GPS stripping on uploads              |
 | Quality  | oxlint (incl. `jsx-a11y`), Prettier, Vitest (API + components + axe-core), Playwright + `@axe-core/playwright` e2e               |
 
@@ -47,21 +47,21 @@ The first `test:e2e` run needs `npx playwright install chromium`, or set `PLAYWR
 
 Copy `.env.EXAMPLE` to `.env`. Everything is optional in development.
 
-| Variable                                                  | Notes                                                                       |
-| --------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `SESSION_SECRET`                                          | **Required in production.** A long random string                            |
-| `DATABASE_URL` / `JAWSDB_URL`                             | MySQL connection URL (either name works; `JAWSDB_URL` keeps Heroku working) |
-| `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_PORT` | Discrete MySQL settings (the v1 setup)                                      |
-| `DB_DIALECT`, `SQLITE_STORAGE`                            | Force `sqlite` and pick its file (default `.data/kiddin.sqlite`)            |
-| `UPLOAD_DIR`                                              | Where photos are stored (default `uploads/`, served at `/data/uploads`)     |
-| `PORT`                                                    | Default `3001`                                                              |
+| Variable                                                  | Notes                                                                                   |
+| --------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `SESSION_SECRET`                                          | **Required in production.** A long random string                                        |
+| `DATABASE_URL` / `JAWSDB_URL`                             | Postgres or MySQL URL; the scheme picks the dialect (`JAWSDB_URL` keeps Heroku working) |
+| `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_PORT` | Discrete MySQL settings (the v1 setup)                                                  |
+| `DB_DIALECT`, `SQLITE_STORAGE`                            | Force `postgres`, `mysql` or `sqlite`; SQLite file (default `.data/kiddin.sqlite`)      |
+| `UPLOAD_DIR`                                              | Where photos are stored (default `uploads/`, served at `/data/uploads`)                 |
+| `PORT`                                                    | Default `3001`                                                                          |
 
 ## Deploying
 
 Kiddin’ is a single Node process with a database and a writable upload directory. That fits Render, Railway, Fly.io or Heroku:
 
 1. Build: `npm ci && npm run build`. Start: `npm start`.
-2. Set `SESSION_SECRET` and `DATABASE_URL` (MySQL).
+2. Set `SESSION_SECRET` and `DATABASE_URL` (Postgres, e.g. a Neon pooled URL with `sslmode=require`, or MySQL).
 3. Mount persistent storage for `UPLOAD_DIR`, or uploads disappear on redeploy.
 
 Tables are created on boot, and v1 databases are upgraded in place (one additive, nullable `post.image_alt` column).

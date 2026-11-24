@@ -7,27 +7,48 @@ const Env = z.object({
   SESSION_SECRET: z.string().optional(),
   DATABASE_URL: z.string().optional(),
   JAWSDB_URL: z.string().optional(),
-  DB_DIALECT: z.enum(['mysql', 'sqlite']).optional(),
+  DB_DIALECT: z.enum(['mysql', 'postgres', 'sqlite']).optional(),
   DB_NAME: z.string().optional(),
   DB_USER: z.string().optional(),
   DB_PASSWORD: z.string().optional(),
   DB_HOST: z.string().default('localhost'),
-  DB_PORT: z.coerce.number().int().positive().default(3306),
+  DB_PORT: z.coerce.number().int().positive().optional(),
   SQLITE_STORAGE: z.string().default('.data/kiddin.sqlite'),
   UPLOAD_DIR: z.string().default('uploads'),
 });
 
 const env = Env.parse(process.env);
 
+export type Dialect = 'mysql' | 'postgres' | 'sqlite';
+
+/**
+ * Picks the database dialect: an explicit DB_DIALECT wins, then the URL scheme
+ * (postgres:// or postgresql:// means Postgres, anything else MySQL), then
+ * discrete DB_* settings (MySQL), else zero-config SQLite.
+ */
+export function resolveDialect(opts: {
+  explicit?: Dialect | undefined;
+  url?: string | undefined;
+  hasDbName?: boolean;
+}): Dialect {
+  if (opts.explicit) return opts.explicit;
+  if (opts.url) return /^postgres(?:ql)?:\/\//i.test(opts.url) ? 'postgres' : 'mysql';
+  return opts.hasDbName ? 'mysql' : 'sqlite';
+}
+
 const isProd = env.NODE_ENV === 'production';
 const databaseUrl = env.DATABASE_URL ?? env.JAWSDB_URL;
-const dialect = env.DB_DIALECT ?? (databaseUrl || env.DB_NAME ? 'mysql' : 'sqlite');
+const dialect = resolveDialect({
+  explicit: env.DB_DIALECT,
+  url: databaseUrl,
+  hasDbName: Boolean(env.DB_NAME),
+});
 
 if (isProd && !env.SESSION_SECRET) {
   throw new Error('SESSION_SECRET must be set in production.');
 }
 if (isProd && dialect === 'sqlite') {
-  console.warn('[kiddin] Running production on SQLite. Set DATABASE_URL for MySQL.');
+  console.warn('[kiddin] Running production on SQLite. Set DATABASE_URL for Postgres or MySQL.');
 }
 
 const root = process.cwd();
@@ -45,7 +66,7 @@ export const config = {
     user: env.DB_USER ?? 'root',
     password: env.DB_PASSWORD ?? '',
     host: env.DB_HOST,
-    port: env.DB_PORT,
+    port: env.DB_PORT ?? (dialect === 'postgres' ? 5432 : 3306),
     storage:
       env.SQLITE_STORAGE === ':memory:' ? ':memory:' : path.resolve(root, env.SQLITE_STORAGE),
   },
