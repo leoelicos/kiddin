@@ -1,0 +1,72 @@
+.btn {
+  --btn-bg: var(--surface);
+  --btn-fg: var(--ink);
+  --btn-border: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  min-block-size: 44px; /* comfortably above the 24px SC 2.5.8 minimum */
+  padding: 0.6em 1.25em;
+  border: 2px solid var(--btn-border);
+  border-radius: var(--radius-pill);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--step-0);
+  line-height: 1.1;
+  text-decoration: none;
+  box-shadow: 3px 3px 0 var(--ink);
+  transition:
+    translate var(--dur) var(--ease-spring),
+    box-shadow var(--dur) var(--ease-spring),
+    background-color var(--dur);
+}
+.btn:hover {
+  translate: -2px -2px;
+  box-shadow: 5px 5px 0 var(--ink);
+}
+.btn:active {
+  translate: 2px 2px;
+  box-shadow: 1px 1px 0 var(--ink);
+}
+.btn:disabled {
+  cursor: progress;
+  opacity: 0.75;
+  translate: none;
+}
+
+.btn--primary {
+  --btn-bg: var(--sky);
+  --btn-fg: var(--on-sky);
+}
+.btn--pink {
+  --btn-bg: var(--pink);
+  --btn-fg: var(--on-pink);
+}
+.btn--danger {
+  --btn-bg: var(--danger);
+  --btn-fg: var(--on-danger);
+}
+.btn--ghost {
+  --btn-bg: transparent;
+  box-shadow: none;
+}
+.btn--ghost:hover {
+  --btn-bg: var(--surface-2);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.btn--sm {
+  min-block-size: 40px;
+  padding: 0.45em 1em;
+  font-size: var(--step--1);
+}
+.btn--lg {
+  min-block-size: 54px;
+  padding: 0.75em 1.6em;
+  font-size: var(--step-1);
+}
+.btn--block {
+  inline-size: 100%;
+}

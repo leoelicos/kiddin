@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#fff7ee" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#160f22" media="(prefers-color-scheme: dark)" />
+    <meta
+      name="description"
+      content="Kiddin’ is a playful community for parents: buy and sell baby gear, share confessions and guess why everyone’s kid is mad."
+    />
+    <meta property="og:title" content="Kiddin’ · The parenting chaos club" />
+    <meta property="og:image" content="/images/happy-baby.webp" />
+    <link rel="icon" href="/images/kiddin.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/images/happy-baby.webp" />
+    <!-- Applies a saved light/dark choice before first paint (external file: CSP allows 'self' scripts only). -->
+    <script src="/theme-init.js"></script>
+    <title>Kiddin’ · The parenting chaos club</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <p style="padding: 2rem; font: 1.25rem system-ui">
+        Kiddin’ needs JavaScript turned on to run.
+      </p>
+    </noscript>
+    <script type="module" src="/src/client/main.tsx"></script>
+  </body>
+</html>

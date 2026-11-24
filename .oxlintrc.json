@@ -1,0 +1,59 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "typescript", "oxc", "jsx-a11y", "import", "unicorn", "vitest"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn"
+  },
+  "rules": {
+    "react/rules-of-hooks": "error",
+    "react/exhaustive-deps": "warn",
+    "react/only-export-components": [
+      "warn",
+      {
+        "allowConstantExport": true
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "jsx-a11y/alt-text": "error",
+    "jsx-a11y/anchor-is-valid": "error",
+    "jsx-a11y/aria-props": "error",
+    "jsx-a11y/aria-role": "error",
+    "jsx-a11y/aria-unsupported-elements": "error",
+    "jsx-a11y/click-events-have-key-events": "error",
+    "jsx-a11y/heading-has-content": "error",
+    "jsx-a11y/html-has-lang": "error",
+    "jsx-a11y/label-has-associated-control": "error",
+    "jsx-a11y/no-autofocus": "error",
+    "jsx-a11y/no-noninteractive-tabindex": "error",
+    "jsx-a11y/no-redundant-roles": "off",
+    "jsx-a11y/no-static-element-interactions": "error",
+    "jsx-a11y/role-has-required-aria-props": "error",
+    "jsx-a11y/tabindex-no-positive": "error",
+    "eqeqeq": "error",
+    "no-console": [
+      "warn",
+      {
+        "allow": ["info", "warn", "error"]
+      }
+    ],
+    "import/no-cycle": "error",
+    "import/no-unassigned-import": "off",
+    "oxc/no-async-endpoint-handlers": "off",
+    "vitest/expect-expect": [
+      "error",
+      {
+        "assertFunctionNames": ["expect", "**.expect"]
+      }
+    ]
+  },
+  "ignorePatterns": ["dist", "node_modules", "coverage", "playwright-report", "test-results"],
+  "overrides": [
+    {
+      "files": ["src/client/routes/**", "src/client/components/Toaster.tsx", "src/client/test/**"],
+      "rules": {
+        "react/only-export-components": "off"
+      }
+    }
+  ]
+}

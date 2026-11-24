@@ -1,0 +1,22 @@
+.confetti {
+  position: absolute;
+  inset-block-start: 40%;
+  inset-inline-start: 50%;
+  z-index: 5;
+  pointer-events: none;
+}
+.confetti span {
+  position: absolute;
+  inline-size: 10px;
+  block-size: 14px;
+  border-radius: 3px;
+  background: var(--c);
+  animation: confetti 1.2s var(--ease-out) forwards;
+}
+@keyframes confetti {
+  to {
+    translate: var(--x) var(--y);
+    rotate: var(--r);
+    opacity: 0;
+  }
+}

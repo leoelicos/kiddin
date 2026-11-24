@@ -1,0 +1,18 @@
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-block-size: 40px;
+  padding: 0.3rem 0.8rem;
+  border: 2px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  font-size: var(--step--1);
+  font-weight: 700;
+}
+.theme-toggle:hover {
+  border-color: var(--ink);
+}
+.theme-toggle__icon {
+  font-size: 1.1em;
+}

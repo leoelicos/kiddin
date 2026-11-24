@@ -1,2 +1,17 @@
 node_modules
+dist
+coverage
+playwright-report
+test-results
 .env
+.env.*.local
+.data
+.DS_Store
+*.log
+uploads/*
+!uploads/.gitkeep
+!uploads/1654564969248.jpeg
+!uploads/1654565367966.jpg
+!uploads/1654565488313.jpg
+!uploads/1654565527867.jpeg
+e2e-screens

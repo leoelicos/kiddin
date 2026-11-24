@@ -1,0 +1,80 @@
+/* ==========================================================================
+   Kiddin' design tokens
+   Playful "nursery pop" palette: warm cream, deep plum ink, bubblegum,
+   sunshine and sky. Every text/background pair is verified for WCAG 2.2 AA
+   by tests/contrast.test.ts (most pairs reach AAA).
+   Each colour is `light-dark(<light>, <dark>)`.
+   ========================================================================== */
+:root {
+  color-scheme: light dark;
+
+  /* surfaces */
+  --bg: light-dark(#fff7ee, #160f22);
+  --bg-2: light-dark(#ffeede, #1d1430);
+  --surface: light-dark(#ffffff, #221838);
+  --surface-2: light-dark(#fff3f7, #2c2046);
+  --line: light-dark(#ecd9e2, #3e2f5c);
+  --line-strong: light-dark(#8a7896, #8f7fb0);
+
+  /* text */
+  --ink: light-dark(#21133a, #fbf6ff);
+  --muted: light-dark(#5a4a6e, #cdbfe2);
+
+  /* brand */
+  --pink: light-dark(#c81d66, #ff7ab0);
+  --on-pink: light-dark(#ffffff, #1a0f28);
+  --pink-soft: light-dark(#ffd9e8, #4a2141);
+  --sun: light-dark(#ffc93c, #ffd45e);
+  --on-sun: #21133a;
+  --sun-soft: light-dark(#fff0c2, #3f3418);
+  --sky: light-dark(#1f5fc4, #8ab8ff);
+  --on-sky: light-dark(#ffffff, #10172b);
+  --sky-soft: light-dark(#dcebff, #1c2c4d);
+  --mint: light-dark(#13856a, #6fe0bf);
+  --danger: light-dark(#b3261e, #ff8f87);
+  --on-danger: light-dark(#ffffff, #1a0f28);
+  --link: light-dark(#a3164f, #ff9cc6);
+
+  /* focus: two-tone ring so it is visible on every surface (SC 2.4.11 / 2.4.13) */
+  --focus: light-dark(#5b21b6, #ffd45e);
+  --focus-halo: light-dark(#ffffff, #160f22);
+
+  /* type */
+  --font-display:
+    'Bricolage Grotesque Variable', 'Bricolage Grotesque', ui-rounded, system-ui, sans-serif;
+  --font-body:
+    'Atkinson Hyperlegible Next Variable', 'Atkinson Hyperlegible Next', system-ui, -apple-system,
+    'Segoe UI', Roboto, sans-serif;
+  --step--1: clamp(0.875rem, 0.85rem + 0.1vw, 0.95rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1: clamp(1.2rem, 1.1rem + 0.5vw, 1.45rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2.1rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3.2rem);
+  --step-4: clamp(2.6rem, 1.8rem + 4.2vw, 5.6rem);
+
+  /* shape + space */
+  --radius-sm: 10px;
+  --radius: 18px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --maxw: 1200px;
+  --header-h: 76px;
+
+  /* depth: chunky "sticker" shadows */
+  --shadow-pop:
+    0 2px 0 var(--line), 0 14px 30px -12px light-dark(rgb(80 20 70 / 0.25), rgb(0 0 0 / 0.6));
+  --shadow-hard: 5px 5px 0 var(--ink);
+
+  /* motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur: 220ms;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}

@@ -1,109 +1,107 @@
-# Kiddin'
+# Kiddin’
 
-![express](https://img.shields.io/badge/4.18.1-0?label=Express&style=for-the-badge&labelColor=white&color=black) ![express-handlebars](https://img.shields.io/badge/6.0.6-0?label=express-handlebars&style=for-the-badge&labelColor=white&color=black) ![express-session](https://img.shields.io/badge/1.17.3-0?label=express-session&style=for-the-badge&labelColor=white&color=black) ![multer](https://img.shields.io/badge/1.4.4-0?label=multer&style=for-the-badge&labelColor=white&color=black)
+> The parenting chaos club. Swap baby gear in the **Marketplace**, share **Confessions**, and make everyone **guess what your kid is mad about**.
 
-![sequelize](https://img.shields.io/badge/6.20.1-0?label=Sequelize&style=for-the-badge&labelColor=white&color=black) ![connect-session-sequelize](https://img.shields.io/badge/7.1.3-0?label=connect-session-sequelize&style=for-the-badge&labelColor=white&color=black)
+Kiddin’ is a full-stack app where signed-in parents browse threads and post a photo, a title and a short story. Marketplace posts also carry a price.
 
-![bcrypt](https://img.shields.io/badge/5.0.1-0?label=bcrypt&style=for-the-badge&labelColor=white&color=black) ![mysql2](https://img.shields.io/badge/2.3.3-0?label=mysql2&style=for-the-badge&labelColor=white&color=black) ![dotenv](https://img.shields.io/badge/16.0.1-0?label=dotenv&style=for-the-badge&labelColor=white&color=black)
+**v2** is a ground-up modernisation of the 2022 bootcamp project (Express + Handlebars + Bootstrap). It is now a typed React single-page app on a hardened Express 5 API, with a new playful design system that is built and tested for **WCAG 2.2 AA**.
 
----
+## Stack
 
-## Description
+| Layer    | Tech                                                                                                                             |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| Web      | React 19, React Router (data router: loaders/actions, view transitions), Vite 8, strict TypeScript 7                             |
+| Styling  | Hand-written modern CSS: design tokens with `light-dark()`, container queries, `:has()`, scroll-driven animations, `color-mix()` |
+| Type     | Bricolage Grotesque (display) and Atkinson Hyperlegible Next (body, designed for low-vision readers), self-hosted via Fontsource |
+| API      | Express 5 on Node ≥ 22.18, running TypeScript directly (native type stripping, no build step)                                    |
+| Data     | Sequelize 6 on MySQL (prod), or zero-config SQLite in dev/test. Same tables and columns as v1                                    |
+| Security | helmet (strict CSP), rate-limited auth, session regeneration, bcrypt, zod validation, EXIF/GPS stripping on uploads              |
+| Quality  | oxlint (incl. `jsx-a11y`), Prettier, Vitest (API + components + axe-core), Playwright + `@axe-core/playwright` e2e               |
 
-Kiddin' is a full stack application that allows logged-in contributors to view Threads and Posts and create Posts. Each Post consist of a photo, a title and a short text area. In our Marketplace Thread, there is an additional option to list a price, which potential buyers can see.
-
-This application uses npm packages `express`, `express-handlebars`, `express-session`, `sequelize`, `connection-session-sequelize`, `bcrypt`, `mysql2` and `dotenv`.
-
-Our application also uses an npm package called `multer`, which allows users to upload photos. As defined in [Issues](https://github.com/leoelicos/kiddin/issues), our future direction includes having a Profile.handlebar for a user's posts and other statistics, and an API route to create and remove Threads.
-
-We made this application to learn about full-stack applications created with Model-View-Controller, and we used GitHub Projects and various Pull Requests to create this app: https://github.com/leoelicos/kiddin/projects/1
-
-## Table of Contents
-
--  [Usage](#usage)
--  [Screenshots](#screenshots)
--  [Installation for API testing in Insomnia](#installation-for-api-testing-in-insomnia)
--  [Credits](#credits)
--  [License](#license)
-
-## Usage
-
-Visit [Kiddin](https://kiddin.herokuapp.com/) on a browser on a computer or mobile.
-
-| Step               | Details                                                                                              |
-| ------------------ | ---------------------------------------------------------------------------------------------------- |
-| `View all threads` | Go to [Kiddin](https://kiddin.herokuapp.com/) or click on Homepage in any page |
-| `View a thread`    | `Login`, then click on one of the three threads on the homepage                                      |
-| `Login`            | Enter your username, email and password                                                              |
-| `Sign up`          | Enter a username, email and a password. Password min. 8 characters                                   |
-
-## Installation for API testing in Insomnia
-
-### 0. Required
-
-| Programs   | Download links                             |
-| ---------- | ------------------------------------------ |
-| `Node`     | https://nodejs.org/en/download/            |
-| `Mysql`    | https://dev.mysql.com/downloads/installer/ |
-| `Insomnia` | https://insomnia.rest/download             |
-
-### 1. Git clone and go inside
+## Quick start
 
 ```sh
-git clone https://github.com/leoelicos/kiddin.git
-
-cd kiddin
-```
-
-### 2. Rename `.env.EXAMPLE` to `.env`
-
-```sh
-mv .env.Example .env
-```
-
-Input your Mysql credentials. _Don't forget to save!_
-
--  `DB_USER={username}`
--  `DB_PASSWORD={password}`
-
-### 3. Go inside `db`, invoke `Mysql`, enter {password}, run `schema`
-
-```sh
-cd db
-
-mysql -u root -p
-
-{password}
-
-source schema.sql;
-
-exit
-```
-
-### 4. Return to root, install dependencies, (optionally) run seed
-
-```sh
-cd ..
-
+git clone https://github.com/leoelicos/kiddin.git && cd kiddin
 npm install
-
-npm run seed
-
+npm run seed   # demo threads, users and posts (SQLite in .data/ by default)
+npm run dev    # API on :3001 and web on http://localhost:5173
 ```
 
-### 5. Start the server, then access the API with Insomnia
+You don’t need MySQL for local development. Demo logins: `leo@leo.com` / `leoiscool`, `jess@jess.com` / `jessiscool`, `ali@ali.com` / `aliiscool`.
 
-```sh
-npm start
-```
+### Scripts
 
----
+| Script             | What it does                                                                                 |
+| ------------------ | -------------------------------------------------------------------------------------------- |
+| `npm run dev`      | API (`node --watch`) and Vite dev server, proxied together                                   |
+| `npm run build`    | Type-check everything, then build the SPA to `dist/client`                                   |
+| `npm start`        | Production server: API, uploads and the built SPA on `$PORT`                                 |
+| `npm run seed`     | **Drops** and recreates tables with demo data                                                |
+| `npm run check`    | typecheck, lint, format check and unit tests (what CI runs first)                            |
+| `npm test`         | Vitest: API integration (supertest + SQLite), components (+ axe), tokens                     |
+| `npm run test:e2e` | Playwright: real browser flows and axe WCAG 2.2 AA scans, light and dark, desktop and mobile |
+
+The first `test:e2e` run needs `npx playwright install chromium`, or set `PLAYWRIGHT_CHANNEL=chrome` to use an installed Chrome.
+
+## Configuration
+
+Copy `.env.EXAMPLE` to `.env`. Everything is optional in development.
+
+| Variable                                                  | Notes                                                                       |
+| --------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `SESSION_SECRET`                                          | **Required in production.** A long random string                            |
+| `DATABASE_URL` / `JAWSDB_URL`                             | MySQL connection URL (either name works; `JAWSDB_URL` keeps Heroku working) |
+| `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_PORT` | Discrete MySQL settings (the v1 setup)                                      |
+| `DB_DIALECT`, `SQLITE_STORAGE`                            | Force `sqlite` and pick its file (default `.data/kiddin.sqlite`)            |
+| `UPLOAD_DIR`                                              | Where photos are stored (default `uploads/`, served at `/data/uploads`)     |
+| `PORT`                                                    | Default `3001`                                                              |
+
+## Deploying
+
+Kiddin’ is a single Node process with a database and a writable upload directory. That fits Render, Railway, Fly.io or Heroku:
+
+1. Build: `npm ci && npm run build`. Start: `npm start`.
+2. Set `SESSION_SECRET` and `DATABASE_URL` (MySQL).
+3. Mount persistent storage for `UPLOAD_DIR`, or uploads disappear on redeploy.
+
+Tables are created on boot, and v1 databases are upgraded in place (one additive, nullable `post.image_alt` column).
+
+## API
+
+All endpoints are JSON under `/api`. The v1 endpoints keep their paths, fields and success shapes.
+
+| Method | Path                 | Auth | Notes                                                                                                                                                                |
+| ------ | -------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GET    | `/api/health`        |      | `{ ok: true }`                                                                                                                                                       |
+| GET    | `/api/users/me`      |      | `{ loggedIn, user }` (new)                                                                                                                                           |
+| POST   | `/api/users`         |      | Sign up `{ username, email, password }`. Returns `{ id, username }` (no password hash)                                                                               |
+| POST   | `/api/users/login`   |      | `{ email, password }` → `{ loggedInMessage, user }`; bad credentials → **401**                                                                                       |
+| POST   | `/api/users/logout`  | ✓    | 204, or 404 if not signed in                                                                                                                                         |
+| GET    | `/api/threads`       |      | Threads with `postCount` and `isMarketplace` (new)                                                                                                                   |
+| GET    | `/api/threads/:id`   | ✓    | `{ thread, posts, isMarketplace }`, newest first (new)                                                                                                               |
+| POST   | `/api/posts/uploads` | ✓    | Multipart: `title`, `text`, `price`, `threadId`, `alt`, file `upload`. HTML forms get a 303 to the thread (v1 behaviour); `Accept: application/json` gets 201 + post |
+| DELETE | `/api/posts/:id`     | ✓    | Author only                                                                                                                                                          |
+
+Validation errors are `400 { message, issues: [{ path, message }] }`.
+
+## Accessibility
+
+Kiddin’ targets **WCAG 2.2 AA**, and automated checks enforce it:
+
+- **Structure:** landmarks, one `h1` per page, logical headings, a skip link, a breadcrumb, `lang="en-AU"`, and page titles per route (React 19 `<title>`).
+- **SPA navigation:** focus moves to `<main>` and the new page title is announced through a live region.
+- **Keyboard:** everything is operable. The focus ring has two tones and stays visible on every surface. `scroll-padding` keeps focused elements clear of the sticky header (2.4.11). Delete confirmation uses a native `<dialog>`, which traps focus and closes on Esc.
+- **Forms:** real labels, hints and errors linked through `aria-describedby`, `aria-invalid`, an error summary that takes focus, and character counters. `autocomplete` tokens are set and paste plus password managers are allowed (3.3.8). The show/hide password toggle uses `aria-pressed`.
+- **Images:** authors can add alt text, with a sensible fallback. Decorative art is hidden from assistive tech.
+- **Colour:** every token pair is contrast-tested in light and dark (`tests/contrast.test.ts`). The theme follows the OS, with a manual override, and supports forced colours.
+- **Motion:** honours `prefers-reduced-motion`. Ambient animations finish within 5 s (2.2.2), and toasts pause on hover or focus.
+- **Targets:** interactive controls are ≥ 40 px (2.5.8 asks for 24 px).
+- **Tested:** axe-core in unit tests and in Playwright on every page, light and dark, desktop and mobile. `jsx-a11y` lint rules run in CI.
 
 ## Credits
 
--  BCS Resources
--  [Normalize.css](https://necolas.github.io)
+Built by [asantidrian](https://github.com/asantidrian), [key16](https://github.com/key16) and [leoelicos](https://github.com/leoelicos). Modernised in 2026.
 
 ## License
 
-Licensed under the [MIT License](./LICENSE).
+[MIT](./LICENSE)

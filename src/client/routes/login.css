@@ -1,0 +1,52 @@
+.auth {
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+}
+.auth__head {
+  text-align: center;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+.auth__title {
+  font-size: var(--step-4);
+}
+.auth__lede {
+  margin: 0.75rem auto 0;
+  max-inline-size: 40ch;
+  font-size: var(--step-1);
+  color: var(--muted);
+}
+.auth__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  max-inline-size: 56rem;
+  margin-inline: auto;
+}
+.auth__card {
+  --tone: var(--sky);
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  border: 3px solid var(--ink);
+  box-shadow: 8px 8px 0 var(--tone);
+}
+.auth__card[data-tone='pink'] {
+  --tone: var(--pink);
+}
+.auth__card h2 {
+  font-size: var(--step-2);
+  margin-bottom: 1.25rem;
+}
+.auth__form {
+  display: grid;
+  gap: 1.1rem;
+}
+.auth__form .btn {
+  margin-top: 0.4rem;
+}
+.auth__alert {
+  margin-bottom: 1rem;
+  padding: 0.8rem 1rem;
+  border: 2px solid var(--danger);
+  border-inline-start-width: 8px;
+  border-radius: var(--radius-sm);
+  background: color-mix(in oklab, var(--danger) 10%, var(--surface));
+  font-weight: 700;
+}
