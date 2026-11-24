@@ -1,0 +1,31 @@
+.wordmark {
+  display: inline-flex;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.wordmark[data-size='xl'] {
+  font-size: var(--step-4);
+}
+.wordmark__l {
+  display: inline-block;
+  transition:
+    translate 300ms var(--ease-spring),
+    rotate 300ms var(--ease-spring);
+  transition-delay: calc(var(--i) * 30ms);
+}
+.wordmark__l:nth-child(3n + 1) {
+  color: var(--pink);
+}
+.wordmark__l:nth-child(3n + 2) {
+  color: var(--sky);
+}
+.wordmark__l:nth-child(3n) {
+  color: light-dark(#b35c00, var(--sun));
+}
+:is(a:hover, a:focus-visible) .wordmark__l {
+  translate: 0 -0.12em;
+  rotate: calc((var(--i) - 3) * 4deg);
+}

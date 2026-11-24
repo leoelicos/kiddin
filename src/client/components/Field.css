@@ -1,0 +1,118 @@
+.field {
+  display: grid;
+  gap: 0.35rem;
+}
+.field__label {
+  font-weight: 700;
+  font-family: var(--font-display);
+}
+.field__optional {
+  font-weight: 400;
+  color: var(--muted);
+  font-family: var(--font-body);
+}
+.field__hint {
+  margin: 0;
+  font-size: var(--step--1);
+  color: var(--muted);
+}
+.field__wrap {
+  position: relative;
+  display: flex;
+}
+.field__prefix {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0.9rem;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  color: var(--muted);
+  pointer-events: none;
+}
+.field__wrap[data-prefix] .field__control {
+  padding-inline-start: 2rem;
+}
+.field__control {
+  inline-size: 100%;
+  min-block-size: 48px;
+  padding: 0.65rem 0.9rem;
+  border: 2px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--ink);
+  transition:
+    border-color var(--dur),
+    box-shadow var(--dur);
+}
+textarea.field__control {
+  resize: vertical;
+  min-block-size: 6rem;
+  field-sizing: content;
+  max-block-size: 18rem;
+}
+.field__control::placeholder {
+  color: color-mix(in oklab, var(--muted) 80%, var(--surface));
+  opacity: 1;
+}
+.field__control:hover {
+  border-color: var(--ink);
+}
+.field__control:focus-visible {
+  border-color: var(--focus);
+  border-radius: var(--radius-sm);
+}
+.field[data-invalid] .field__control {
+  border-color: var(--danger);
+  border-width: 3px;
+}
+.field__foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  min-block-size: 0;
+}
+.field__foot:has(> span:only-child:empty) {
+  display: none;
+}
+.field__error {
+  margin: 0;
+  color: var(--danger);
+  font-weight: 700;
+  font-size: var(--step--1);
+}
+.field__counter {
+  margin: 0 0 0 auto;
+  font-size: var(--step--1);
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.field__counter[data-near] {
+  color: var(--danger);
+  font-weight: 700;
+}
+
+.field__wrap[data-suffix] .field__control {
+  padding-inline-end: 5rem;
+}
+.field__suffix-btn {
+  position: absolute;
+  inset-block: 4px;
+  inset-inline-end: 4px;
+  min-inline-size: 44px;
+  padding: 0 0.8rem;
+  border: 0;
+  border-radius: 7px;
+  background: var(--surface-2);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: var(--step--1);
+}
+.field__suffix-btn:hover {
+  background: var(--pink-soft);
+}
+.field__label abbr {
+  text-decoration: none;
+  font-weight: 400;
+  color: var(--muted);
+}

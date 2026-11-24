@@ -1,0 +1,24 @@
+.error-page {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  padding-block: clamp(3rem, 10vw, 7rem);
+  text-align: center;
+}
+.error-page__code {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(5rem, 20vw, 12rem);
+  line-height: 0.9;
+  color: var(--pink);
+  -webkit-text-stroke: 3px var(--ink);
+  text-shadow: 8px 8px 0 var(--sun);
+}
+.error-page__title {
+  font-size: var(--step-3);
+}
+.error-page__msg {
+  color: var(--muted);
+  font-size: var(--step-1);
+}

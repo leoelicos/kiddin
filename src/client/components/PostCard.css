@@ -1,0 +1,127 @@
+.post-card {
+  container-type: inline-size;
+  overflow: hidden;
+  border: 2px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-pop);
+}
+.post-card[data-featured] {
+  border: 3px solid var(--ink);
+  box-shadow: 8px 8px 0 var(--pink);
+  margin-bottom: 1.5rem;
+}
+@container (min-width: 34rem) {
+  .post-card__inner {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+  }
+  .post-card__inner .post-card__media {
+    aspect-ratio: auto;
+    min-block-size: 100%;
+  }
+}
+.post-card__inner {
+  display: grid;
+  block-size: 100%;
+}
+.post-card__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: var(--surface-2);
+}
+.post-card__media img {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+.post-card__price {
+  position: absolute;
+  inset-block-start: 0.8rem;
+  inset-inline-start: 0.8rem;
+  margin: 0;
+  padding: 0.3rem 0.8rem;
+  border: 2px solid var(--on-sun);
+  border-radius: var(--radius-pill);
+  background: var(--sun);
+  color: var(--on-sun);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--step-1);
+  rotate: -4deg;
+  box-shadow: 3px 3px 0 var(--on-sun);
+}
+.post-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: clamp(1rem, 3cqi, 1.6rem);
+}
+.post-card__flag {
+  align-self: flex-start;
+  margin: 0;
+  padding: 0.15rem 0.7rem;
+  border-radius: var(--radius-pill);
+  background: var(--pink);
+  color: var(--on-pink);
+  font-weight: 800;
+  font-size: var(--step--1);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.post-card__title {
+  font-size: var(--step-1);
+}
+.post-card[data-featured] .post-card__title {
+  font-size: var(--step-2);
+}
+.post-card__text {
+  margin: 0;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+.post-card__meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  font-size: var(--step--1);
+  color: var(--muted);
+}
+.post-card__meta strong {
+  color: var(--ink);
+}
+.post-card__delete {
+  margin-inline-start: auto;
+  min-block-size: 36px;
+  padding: 0.2rem 0.8rem;
+  border: 2px solid var(--danger);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--danger);
+  font-weight: 700;
+}
+.post-card__delete:hover {
+  background: var(--danger);
+  color: var(--on-danger);
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .feed .post-card {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    translate: 0 40px;
+    scale: 0.97;
+  }
+}

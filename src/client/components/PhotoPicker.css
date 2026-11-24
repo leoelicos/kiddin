@@ -1,0 +1,79 @@
+.photo-picker {
+  display: grid;
+  gap: 0.35rem;
+}
+.photo-picker__drop {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-block-size: 10rem;
+  padding: 1.25rem;
+  border: 3px dashed var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    border-color var(--dur),
+    background-color var(--dur),
+    scale var(--dur) var(--ease-spring);
+}
+.photo-picker__drop:hover,
+.photo-picker__drop[data-dragging] {
+  border-color: var(--pink);
+  background: var(--pink-soft);
+}
+.photo-picker__drop[data-dragging] {
+  scale: 1.02;
+}
+.photo-picker__drop:has(:focus-visible) {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px var(--focus-halo);
+}
+.photo-picker[data-invalid] .photo-picker__drop {
+  border-color: var(--danger);
+  border-style: solid;
+}
+.photo-picker__input {
+  /* visually hidden but focusable and still reachable by AT */
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.photo-picker__empty {
+  display: grid;
+  gap: 0.3rem;
+  justify-items: center;
+}
+.photo-picker__icon {
+  font-size: 2.2rem;
+}
+.photo-picker__small {
+  font-size: var(--step--1);
+  color: var(--muted);
+}
+.photo-picker__drop[data-has-preview] {
+  padding: 0;
+  border-style: solid;
+  border-color: var(--ink);
+}
+.photo-picker__preview {
+  inline-size: 100%;
+  max-block-size: 16rem;
+  object-fit: cover;
+}
+.photo-picker__change {
+  position: absolute;
+  inset-block-end: 0.75rem;
+  inset-inline-end: 0.75rem;
+  padding: 0.35rem 0.8rem;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: var(--step--1);
+}
