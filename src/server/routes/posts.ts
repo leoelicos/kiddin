@@ -4,7 +4,7 @@ import { LIMITS } from '../../shared/types.ts';
 import { withAuth } from '../lib/auth.ts';
 import { HttpError, parse, wantsJson } from '../lib/http.ts';
 import { isMarketplace, toPostDto } from '../lib/serialize.ts';
-import { saveImage, upload } from '../lib/uploads.ts';
+import { deleteImage, saveImage, upload } from '../lib/uploads.ts';
 import { Post, Thread, User } from '../models/index.ts';
 
 export const postsRouter = Router();
@@ -86,7 +86,10 @@ postsRouter.post('/uploads', withAuth, upload.single('upload'), async (req, res)
 /** DELETE /api/posts/:id — only the author can delete (v1-compatible). */
 postsRouter.delete('/:id', withAuth, async (req, res) => {
   const { id } = parse(IdParams, req.params);
-  const deleted = await Post.destroy({ where: { id, user_id: req.session.user_id! } });
-  if (!deleted) throw new HttpError(404, 'No post found with this id!');
-  res.status(200).json(deleted);
+  const post = await Post.findOne({ where: { id, user_id: req.session.user_id! } });
+  if (!post) throw new HttpError(404, 'No post found with this id!');
+  const imageUrl = post.image_url;
+  await post.destroy();
+  await deleteImage(imageUrl);
+  res.status(200).json(1);
 });

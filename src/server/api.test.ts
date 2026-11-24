@@ -7,6 +7,7 @@ import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
 const uploadDir = await fs.mkdtemp(path.join(os.tmpdir(), 'kiddin-uploads-'));
 process.env.UPLOAD_DIR = uploadDir;
+delete process.env.BLOB_READ_WRITE_TOKEN; // local-disk path; Blob is covered in blob.test.ts
 
 const { createApp } = await import('./app.ts');
 const { sequelize } = await import('./db.ts');
@@ -211,6 +212,22 @@ describe('posts', () => {
       .set('Accept', 'application/json')
       .field('title', 'x')
       .expect(401);
+  });
+
+  it('removes a local upload from disk when its post is deleted', async () => {
+    const agent = await loggedInAgent();
+    const res = await agent
+      .post('/api/posts/uploads')
+      .set('Accept', 'application/json')
+      .field('title', 'Short-lived')
+      .field('text', 'Gone soon.')
+      .field('threadId', '2')
+      .attach('upload', jpeg, { filename: 'gone.jpg', contentType: 'image/jpeg' })
+      .expect(201);
+    const file = path.join(uploadDir, path.basename(res.body.image_url));
+    await fs.access(file);
+    await agent.delete(`/api/posts/${res.body.id}`).set('Accept', 'application/json').expect(200);
+    await expect(fs.access(file)).rejects.toThrow(/ENOENT/);
   });
 
   it('only lets the author delete a post', async () => {

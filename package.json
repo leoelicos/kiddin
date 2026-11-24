@@ -33,6 +33,7 @@
   "dependencies": {
     "@fontsource-variable/atkinson-hyperlegible-next": "^5.3.0",
     "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@vercel/blob": "^2.9.0",
     "bcryptjs": "^3.0.3",
     "compression": "^1.8.2",
     "connect-session-sequelize": "^8.0.6",

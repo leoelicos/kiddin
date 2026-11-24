@@ -15,6 +15,7 @@ const Env = z.object({
   DB_PORT: z.coerce.number().int().positive().optional(),
   SQLITE_STORAGE: z.string().default('.data/kiddin.sqlite'),
   UPLOAD_DIR: z.string().default('uploads'),
+  BLOB_READ_WRITE_TOKEN: z.string().optional(),
 });
 
 const env = Env.parse(process.env);
@@ -71,6 +72,8 @@ export const config = {
       env.SQLITE_STORAGE === ':memory:' ? ':memory:' : path.resolve(root, env.SQLITE_STORAGE),
   },
   uploadDir: path.resolve(root, env.UPLOAD_DIR),
+  /** When set, photos go to Vercel Blob instead of UPLOAD_DIR. */
+  blobToken: env.BLOB_READ_WRITE_TOKEN || undefined,
   clientDir: path.resolve(root, 'dist/client'),
 } as const;
 

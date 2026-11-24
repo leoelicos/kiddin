@@ -8,7 +8,7 @@ import helmet from 'helmet';
 import { config } from './config.ts';
 import { sequelize } from './db.ts';
 import { errorHandler } from './lib/http.ts';
-import { PUBLIC_UPLOAD_PATH } from './lib/uploads.ts';
+import { BLOB_IMG_SRC, PUBLIC_UPLOAD_PATH } from './lib/uploads.ts';
 import { apiRouter } from './routes/index.ts';
 
 const SequelizeStore = connectSessionSequelize(session.Store);
@@ -24,7 +24,7 @@ export function createApp() {
       contentSecurityPolicy: {
         directives: {
           'default-src': ["'self'"],
-          'img-src': ["'self'", 'data:', 'blob:'],
+          'img-src': ["'self'", 'data:', 'blob:', BLOB_IMG_SRC],
           'style-src': ["'self'", "'unsafe-inline'"],
           'script-src': ["'self'"],
           'connect-src': ["'self'"],

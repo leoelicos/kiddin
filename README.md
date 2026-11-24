@@ -47,14 +47,15 @@ The first `test:e2e` run needs `npx playwright install chromium`, or set `PLAYWR
 
 Copy `.env.EXAMPLE` to `.env`. Everything is optional in development.
 
-| Variable                                                  | Notes                                                                                   |
-| --------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `SESSION_SECRET`                                          | **Required in production.** A long random string                                        |
-| `DATABASE_URL` / `JAWSDB_URL`                             | Postgres or MySQL URL; the scheme picks the dialect (`JAWSDB_URL` keeps Heroku working) |
-| `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_PORT` | Discrete MySQL settings (the v1 setup)                                                  |
-| `DB_DIALECT`, `SQLITE_STORAGE`                            | Force `postgres`, `mysql` or `sqlite`; SQLite file (default `.data/kiddin.sqlite`)      |
-| `UPLOAD_DIR`                                              | Where photos are stored (default `uploads/`, served at `/data/uploads`)                 |
-| `PORT`                                                    | Default `3001`                                                                          |
+| Variable                                                  | Notes                                                                                       |
+| --------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `SESSION_SECRET`                                          | **Required in production.** A long random string                                            |
+| `DATABASE_URL` / `JAWSDB_URL`                             | Postgres or MySQL URL; the scheme picks the dialect (`JAWSDB_URL` keeps Heroku working)     |
+| `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_PORT` | Discrete MySQL settings (the v1 setup)                                                      |
+| `DB_DIALECT`, `SQLITE_STORAGE`                            | Force `postgres`, `mysql` or `sqlite`; SQLite file (default `.data/kiddin.sqlite`)          |
+| `UPLOAD_DIR`                                              | Where photos are stored (default `uploads/`, served at `/data/uploads`)                     |
+| `BLOB_READ_WRITE_TOKEN`                                   | Store photos in Vercel Blob (public store) instead of `UPLOAD_DIR`; deleted with their post |
+| `PORT`                                                    | Default `3001`                                                                              |
 
 ## Deploying
 
@@ -62,7 +63,7 @@ Kiddin’ is a single Node process with a database and a writable upload directo
 
 1. Build: `npm ci && npm run build`. Start: `npm start`.
 2. Set `SESSION_SECRET` and `DATABASE_URL` (Postgres, e.g. a Neon pooled URL with `sslmode=require`, or MySQL).
-3. Mount persistent storage for `UPLOAD_DIR`, or uploads disappear on redeploy.
+3. Set `BLOB_READ_WRITE_TOKEN` (a public Vercel Blob store) so photos survive redeploys, or mount persistent storage for `UPLOAD_DIR`.
 
 Tables are created on boot, and v1 databases are upgraded in place (one additive, nullable `post.image_alt` column).
 
