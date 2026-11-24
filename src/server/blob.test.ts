@@ -108,9 +108,11 @@ describe('Vercel Blob uploads (BLOB_READ_WRITE_TOKEN set)', () => {
 
   it('leaves seeded /images assets alone and still deletes the post', async () => {
     const jess = await loggedInAgent('jess@jess.com', 'jessiscool');
+    const seeded = await Post.findByPk(1);
+    expect(seeded?.image_url).toMatch(/^\/images\/seeds\/.+\.webp$/);
     await jess.delete('/api/posts/1').set('Accept', 'application/json').expect(200);
     expect(blob.del).not.toHaveBeenCalled();
-    await request(app).get('/images/seeds/babynappies.webp').expect(200);
+    await fs.access(path.join(process.cwd(), 'public', seeded!.image_url!));
   });
 
   it('still deletes the post if Blob deletion fails', async () => {
